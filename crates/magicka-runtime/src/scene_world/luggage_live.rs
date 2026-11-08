@@ -230,6 +230,33 @@ mod tests {
             .collect()
     }
 
+    /// No injected pools: loading a Survival map reads PackMan's packs from the
+    /// user's Magicka.exe, and the first reward luggage spawns from them.
+    #[test]
+    fn survival_map_reads_packs_from_the_game_and_spawns_luggage() {
+        let root = magicka_content::retail_content_dir();
+        if !root.join("../Magicka.exe").is_file() {
+            return;
+        }
+        let mut s = glade().unwrap();
+        let packs = s
+            .world
+            .survival_packs
+            .clone()
+            .expect("packs read from Magicka.exe");
+        assert_eq!(packs.items.len(), 47);
+        assert!(!packs.magicks.is_empty());
+        for _ in 0..(7.6 * 60.0) as usize {
+            s.step(1.0 / 60.0);
+        }
+        assert_eq!(
+            luggage(&s, LUGGAGE_MAGICK_TEMPLATE).len(),
+            1,
+            "log: {:?}",
+            s.world.log
+        );
+    }
+
     #[test]
     fn first_luggage_carries_a_magick_book_and_drops_it_on_death() {
         let Some(mut s) = glade() else {

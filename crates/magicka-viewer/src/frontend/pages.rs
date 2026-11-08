@@ -1657,8 +1657,7 @@ impl CharacterPage {
             }
             _ => return None,
         }
-        let cache = PackCatalogue::default_cache(std::path::Path::new(&s.content));
-        let catalogue = PackCatalogue::load(&cache).ok()?;
+        let catalogue = PackCatalogue::for_content(std::path::Path::new(&s.content)).ok()?;
         let saved = &s.settings["packs"];
         let enabled = catalogue
             .packs

@@ -1694,10 +1694,8 @@ impl PlaySession {
         if let Err(e) = session.runtime.initialize_actions(&mut session.world) {
             session.fail_scripts(format!("initialize: {e:?}"));
         }
-        // PackMan pools: the private extractor cache, when present.
-        if let Ok(packs) = crate::ruleset::SurvivalPacks::load(
-            &crate::ruleset::SurvivalPacks::default_cache(content),
-        ) {
+        // PackMan pools: read from the user's Magicka.exe, when present.
+        if let Ok(packs) = crate::ruleset::SurvivalPacks::for_content(content) {
             session.set_survival_packs(packs);
         }
         let ruleset = session.runtime.layout().ruleset.clone();

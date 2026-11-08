@@ -100,6 +100,7 @@ impl RulesetLayout {
 }
 
 mod packs;
+mod packs_native;
 mod survival;
 mod timed_objective;
 mod versus;

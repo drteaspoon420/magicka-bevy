@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Extract private reward pack configuration by static CIL decoding only.
 
+Research cross-check: the game reads the same data from Magicka.exe itself
+(magicka-runtime ruleset/packs_native.rs), and its tests require both to match.
+This script needs the research lab's output/evidence/tools helpers.
+
 No target code is loaded or executed. Default selection is packs with app ID 0;
 --item-packs/--magick-packs explicitly select comma-separated native handles.
 Each pack records its localization key, DLC app ID, PackThumbs cell and pool.

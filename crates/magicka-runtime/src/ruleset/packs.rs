@@ -1,8 +1,10 @@
 //! PackMan reward pools for Survival and Versus luggage (research/rulesets.md,
 //! "Lobby pack selection"). The native pack lists are compiled into the
-//! executable; the private `output/rewrite/tools/extract_survival_packs.py`
-//! decodes them statically into `output/.cache/survival-packs.json`, which
-//! hosts load here. Nothing from the target is embedded in source.
+//! executable; [`PackCatalogue::for_content`] reads them statically from the
+//! user's `Magicka.exe` next to the Content folder (`packs_native`). The
+//! research extractor `tools/extract_survival_packs.py` writes the same data as
+//! JSON (`output/.cache/survival-packs.json`), used when the executable is
+//! absent. Nothing from the target is embedded in source.
 //!
 //! PackMan holds thirteen ItemPacks then six MagickPacks (AllPacks order).
 //! Each pack has a licence (HackHelper.CheckLicense: every item's or
@@ -65,10 +67,12 @@ pub enum PacksError {
     Io(std::io::Error),
     Json(serde_json::Error),
     Format(&'static str),
+    /// `Magicka.exe` could not be read as the expected .NET executable.
+    Executable(String),
 }
 
 /// A pack name as the catalogue stores it: lowercase with a leading `#`.
-fn pack_key(name: &str) -> String {
+pub(super) fn pack_key(name: &str) -> String {
     let trimmed = name.trim().trim_start_matches('#').to_ascii_lowercase();
     if trimmed.is_empty() {
         trimmed
@@ -151,6 +155,26 @@ impl PackCatalogue {
         Self::parse(&std::fs::read(path).map_err(PacksError::Io)?)
     }
 
+    /// The game's packs for a Content folder: read from `Magicka.exe` beside
+    /// it, else the research extractor's JSON cache. Cached per folder.
+    pub fn for_content(content: &Path) -> Result<Self, PacksError> {
+        use std::collections::HashMap;
+        use std::sync::{Mutex, OnceLock};
+        static CACHE: OnceLock<Mutex<HashMap<PathBuf, PackCatalogue>>> = OnceLock::new();
+        let exe = content.join("../Magicka.exe");
+        let key = exe.canonicalize().unwrap_or_else(|_| exe.clone());
+        let cache = CACHE.get_or_init(Default::default);
+        if let Some(found) = cache.lock().unwrap().get(&key) {
+            return Ok(found.clone());
+        }
+        let catalogue = match std::fs::read(&exe) {
+            Ok(raw) => super::packs_native::extract(&raw)?,
+            Err(_) => Self::load(&Self::default_cache(content))?,
+        };
+        cache.lock().unwrap().insert(key, catalogue.clone());
+        Ok(catalogue)
+    }
+
     /// The extractor's default output relative to the installed content
     /// root (`<repo>/target/Magicka/Content` → `<repo>/output/.cache`).
     pub fn default_cache(content: &Path) -> PathBuf {
@@ -222,6 +246,12 @@ impl SurvivalPacks {
     /// See [`PackCatalogue::default_cache`].
     pub fn default_cache(content: &Path) -> PathBuf {
         PackCatalogue::default_cache(content)
+    }
+
+    /// The default pools of [`PackCatalogue::for_content`].
+    pub fn for_content(content: &Path) -> Result<Self, PacksError> {
+        let catalogue = PackCatalogue::for_content(content)?;
+        Ok(catalogue.pools(&catalogue.default_enabled()))
     }
 
     pub fn load(path: &Path) -> Result<Self, PacksError> {

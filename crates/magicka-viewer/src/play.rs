@@ -1800,9 +1800,8 @@ pub(crate) fn prepare(
     let packs = arg(args, "--packs")
         .map(|spec| -> Result<_, String> {
             use magicka_runtime::ruleset::PackCatalogue;
-            let path = PackCatalogue::default_cache(std::path::Path::new(&content));
-            let catalogue =
-                PackCatalogue::load(&path).map_err(|e| format!("{}: {e:?}", path.display()))?;
+            let catalogue = PackCatalogue::for_content(std::path::Path::new(&content))
+                .map_err(|e| format!("survival packs: {e:?}"))?;
             Ok(catalogue.pools(&catalogue.selection(&spec)))
         })
         .transpose()?;
