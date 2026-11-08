@@ -1,0 +1,71 @@
+# Asset export steps run by play.sh and play.ps1, in order.
+#
+#   NAME  VERSION  LEGACY  PROGRAM  ARGUMENTS...
+#
+# Each step keeps a manifest in <cache>/exports/NAME.txt: its VERSION, then every
+# file it produced. A step runs again when VERSION changes (re-exporting
+# everything) or when a listed file is missing (exporting only what is missing,
+# --missing). Bump VERSION when a program's output for that step changes.
+#
+# LEGACY marks caches made before manifests existed, so they are completed rather
+# than rebuilt. Paths are relative to the cache:
+#   -            none
+#   exists:PATH  version 1 if PATH exists
+#   stamp:PATH   the version written in the file PATH
+#
+# PROGRAM is a binary built from this workspace. In ARGUMENTS, {content} is the
+# game's Content folder and {cache} the converted-asset cache. Fields are split
+# on whitespace; no field may contain spaces.
+#
+# Every model step was bumped once on 2026-11-02: packed XNA Color COLOR0 vertex
+# colours (VertexElementFormat.Color) are now exported.
+
+textures 1 exists:textures tex-export {content} {cache}/textures
+# Levels: 2 liquid tangents/deep weight and magicka_liquid material extras;
+# 3 spec/emissive material extras for the original deferred lighting;
+# 4 material texture URIs; 5 lava material and initial freeze stream;
+# 6 shadow-only (invisible, shadow-casting) meshes.
+levels 7 stamp:gltf/.level-export-version level-gltf {content} {cache}/textures {cache}/gltf --all
+# Characters: 4 skinned SpecularMap (material map) extras; 5 native diffuse-alpha cutout (MASK).
+characters 6 stamp:gltf/.character-export-version character-gltf {content} {cache}/textures {cache}/gltf --reference --all
+
+missiles 2 exists:gltf/Models/Missiles model-gltf {content} {cache}/textures {cache}/gltf --missiles
+# 2 native diffuse-alpha cutout (MASK).
+physics-props 3 stamp:gltf/.physics-props-exported model-gltf {content} {cache}/textures {cache}/gltf --physics
+# 4 item projectile models; 5 native diffuse-alpha cutout (MASK);
+# 6 preserve native deferred material parameters on static equipment/projectiles.
+equipment 7 stamp:gltf/.all-items-exported model-gltf {content} {cache}/textures {cache}/gltf --items
+# 2 native diffuse-alpha cutout (MASK).
+gibs 3 stamp:gltf/.gibs-exported model-gltf {content} {cache}/textures {cache}/gltf --gibs
+
+# Books are not referenced by Item assets, so --items does not export them.
+magick-book 2 exists:gltf/Models/Items_Wizard/magickbook_major.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Items_Wizard/magickbook_major
+# Assatur's staff (StaffRenderData; a static Model drawn at the staff joint).
+assatur-staff 2 exists:gltf/Models/Bosses/assatur/assatur_staff.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/assatur/assatur_staff
+# Skinned magick models drawn by their entities (Tornado, Summon Phoenix).
+magick-models 2 exists:gltf/Models/Magicks/Phoenix.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Magicks/tornado Models/Magicks/tornado_debri@Models/Magicks/tornado Models/Magicks/Phoenix
+# Wave pillars: earthBarrier0's mesh with rockpillar_animation's clips.
+wave-pillars 2 exists:gltf/Models/Effects/earthBarrier0_mesh+rockpillar_animation.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Effects/earthBarrier0_mesh@@Models/Effects/rockpillar_animation
+
+# Magicka's animated mouse cursors (Cursors/*.ani next to Content).
+cursors 1 exists:cursors/cursors.json cursor-export {content}/.. {cache}/cursors
+
+# Summon Elemental's ElementalEgg draws the elemental mesh (posed at runtime).
+elemental 2 exists:gltf/Models/Characters/Elemental/elemental_mesh.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Characters/Elemental/elemental_mesh
+# Death is a dedicated entity with an independently attached scythe.
+death 2 exists:gltf/Models/Bosses/death/death.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/Death/Death Models/Bosses/Death/death_Scythe
+# Jormungandr is a dedicated boss, outside the character-template export.
+jormungandr 2 exists:gltf/Models/Bosses/jormungandr/jormungandr.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/Jormungandr/Jormungandr
+# Grimnir's mesh uses the separate animation model's skeleton and clips.
+grimnir 2 exists:gltf/Models/Bosses/grimnir/grimnir_mesh.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/grimnir/grimnir_mesh@Models/Bosses/grimnir/grimnir_animation
+# The Machine boss (Havindr) and the bound king, posed at runtime.
+the-machine 2 exists:gltf/Models/Bosses/themachine/themachine.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/theMachine/themachine Models/Characters/Human/King_animation
+# Fafnir (Ruins) and its falling ceiling debris.
+fafnir 2 exists:gltf/Models/Bosses/fafnir/fafnir_mesh.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/fafnir/fafnir_mesh@Models/Bosses/fafnir/fafnir_animation Models/Bosses/fafnir/Ceiling_Debri
+# Tsar bosses: Parker (Tsar_WizardCastle), Cthulhu and its tentacles (Tsar_Rlyeh).
+tsar-bosses 2 exists:gltf/Models/Bosses/parker/parker.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/parker/parker@Models/Bosses/parker/parker_animation Models/Bosses/cthulhu/cthulhu_mesh@Models/Bosses/cthulhu/cthulhu_animations Models/Bosses/cthulhu/tentacle_mesh@Models/Bosses/cthulhu/tentacle_animations
+
+# Spell mines, barriers and other effect models. 2 magicka_skinned extras (mine
+# overlay tint, material map); 5 barrier rune discs and the weapon IceBlade;
+# 6 campaign dispensers; 7 Entangle_web (Parker's webs).
+effect-models 8 stamp:gltf/.effect-models-version model-gltf {content} {cache}/textures {cache}/gltf Models/Effects/mine Models/Effects/earthBarrier0_mesh@Models/Effects/earthBarrier_animation Models/Effects/iceBarrier0_mesh@Models/Effects/iceBarrier_animation Models/Effects/icebarrier_geyser Models/Effects/icebarrier_tesla Models/Effects/iceBarrier_earth Models/Effects/earthBarrier_volcano Models/Effects/combined_armor Models/Effects/armor_aura Models/Effects/runesArcane Models/Effects/runesLife Models/Effects/Ice_Blade Models/Effects/SpiderHole Models/Effects/GoblinTent Models/Effects/SpiderEggs Models/Effects/Entangle_web
