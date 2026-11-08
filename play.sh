@@ -33,24 +33,138 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 LAB=$PWD
+# Settings come from the environment first, then from ./.env (written by this
+# script when you choose to save a found game install). Only these keys are
+# read from .env, and the file is parsed, never executed.
+ENV_FILE=$LAB/.env
+ENV_KEYS=" MAGICKA_CONTENT MAGICKA_CACHE MAGICKA_FFMPEG "
+if [ -f "$ENV_FILE" ]; then
+  while IFS= read -r line || [ -n "$line" ]; do
+    line=${line%$'\r'}
+    [[ "$line" =~ ^[[:space:]]*(export[[:space:]]+)?([A-Z_]+)=(.*)$ ]] || continue
+    key=${BASH_REMATCH[2]} value=${BASH_REMATCH[3]}
+    [[ "$ENV_KEYS" == *" $key "* ]] || continue
+    [ -z "${!key:-}" ] || continue  # the real environment wins
+    if [[ "$value" =~ ^\"(.*)\"$ || "$value" =~ ^\'(.*)\'$ ]]; then value=${BASH_REMATCH[1]}; fi
+    export "$key=$value"
+  done < "$ENV_FILE"
+fi
 # MAGICKA_CONTENT / MAGICKA_CACHE override the retail Content folder and the
 # converted-asset cache. In the public repository the workspace is the root
-# and the game install is linked or copied to ./Magicka.
+# and the game install is linked or copied to ./Magicka, saved in .env, or
+# found in a Steam library.
 if [ -f "$LAB/Cargo.toml" ]; then
   REWRITE=$LAB
-  CONTENT=${MAGICKA_CONTENT:-$LAB/Magicka/Content}
+  DEFAULT_CONTENT=$LAB/Magicka/Content
   CACHE=${MAGICKA_CACHE:-$LAB/.cache}
 else
   REWRITE=$LAB/output/rewrite
-  CONTENT=${MAGICKA_CONTENT:-$LAB/target/Magicka/Content}
+  DEFAULT_CONTENT=$LAB/target/Magicka/Content
   CACHE=${MAGICKA_CACHE:-$LAB/output/.cache}
 fi
+CONTENT=
+
+interactive() { [ -t 0 ] || [ "${MAGICKA_PLAY_INTERACTIVE:-}" = 1 ]; }
+ask() { # ask "Question" default(y|n) -> status 0 for yes
+  local reply hint='[y/N]'
+  [ "$2" = y ] && hint='[Y/n]'
+  printf '%s %s ' "$1" "$hint" >&2
+  IFS= read -r reply || reply=
+  reply=$(printf '%s' "$reply" | tr '[:upper:]' '[:lower:]')
+  case "$reply" in
+    y|yes) return 0 ;;
+    n|no) return 1 ;;
+    *) [ "$2" = y ] ;;
+  esac
+}
+# Accept either the game install folder or its Content folder.
+content_of() {
+  local dir=${1%/}
+  case "$dir" in "~"|"~/"*) dir=$HOME${dir#\~} ;; esac
+  if [ -d "$dir/Content/Levels" ]; then printf '%s\n' "$dir/Content"
+  elif [ -d "$dir/Levels" ] && [ "${dir##*/}" = Content ]; then printf '%s\n' "$dir"
+  else return 1
+  fi
+}
+# Every Steam library on this machine, from each Steam root's libraryfolders.vdf.
+steam_libraries() {
+  local root vdf
+  for root in "$HOME/.steam/steam" "$HOME/.steam/root" "$HOME/.local/share/Steam" \
+      "$HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam" \
+      "$HOME/snap/steam/common/.local/share/Steam" \
+      "$HOME/Library/Application Support/Steam" \
+      "/c/Program Files (x86)/Steam" "/mnt/c/Program Files (x86)/Steam"; do
+    [ -d "$root/steamapps" ] || continue
+    printf '%s\n' "$root"
+    vdf=$root/steamapps/libraryfolders.vdf
+    [ -f "$vdf" ] || continue
+    sed -n 's/^[[:space:]]*"path"[[:space:]]*"\(.*\)"[[:space:]]*$/\1/p' "$vdf" | sed 's/\\\\/\\/g'
+  done
+}
+find_steam_content() {
+  local lib found seen=" "
+  while IFS= read -r lib; do
+    found=$(content_of "$lib/steamapps/common/Magicka") || continue
+    found=$(cd "$found" && pwd -P)
+    [[ "$seen" == *" $found "* ]] && continue
+    seen="$seen$found "
+    printf '%s\n' "$found"
+  done < <(steam_libraries)
+}
+save_content() {
+  if [[ "$1" == *'"'* || "$1" == *$'\n'* ]]; then
+    echo "Not saving: the path contains a quote or newline." >&2; return 0
+  fi
+  local tmp=$ENV_FILE.tmp
+  { [ -f "$ENV_FILE" ] && grep -vE '^[[:space:]]*(export[[:space:]]+)?MAGICKA_CONTENT=' "$ENV_FILE" || true
+    printf 'MAGICKA_CONTENT="%s"\n' "$1"; } > "$tmp"
+  mv "$tmp" "$ENV_FILE"
+  echo "Saved to $ENV_FILE; later runs use it. Delete that line to choose again." >&2
+}
+offer_save() {
+  if interactive && ask "Save this location to .env for future runs?" y; then save_content "$1"; fi
+}
+resolve_content() {
+  if [ -n "${MAGICKA_CONTENT:-}" ]; then
+    CONTENT=$MAGICKA_CONTENT
+    [ -d "$CONTENT" ] || { echo "MAGICKA_CONTENT points to a missing folder: $CONTENT (set in the environment or $ENV_FILE)" >&2; exit 1; }
+    return
+  fi
+  if [ -d "$DEFAULT_CONTENT" ]; then CONTENT=$DEFAULT_CONTENT; return; fi
+  local found=() path
+  mapfile -t found < <(find_steam_content)
+  for path in "${found[@]}"; do
+    if ! interactive; then
+      CONTENT=$path
+      echo "Using Magicka from Steam: $CONTENT (run interactively to save it to .env)" >&2
+      return
+    fi
+    if ask "Found Magicka in Steam: $path
+Use it?" y; then
+      CONTENT=$path; offer_save "$path"; return
+    fi
+  done
+  if interactive; then
+    echo "Magicka was not found${found:+ (or no Steam install was chosen)}." >&2
+    while :; do
+      printf 'Path to your Magicka install (or its Content folder), empty to quit: ' >&2
+      IFS= read -r path || path=
+      [ -n "$path" ] || exit 1
+      if CONTENT=$(content_of "$path"); then offer_save "$CONTENT"; return; fi
+      echo "No Magicka Content folder (with Levels/) at: $path" >&2
+    done
+  fi
+  echo "Magicka game files not found. Link the install as $LAB/Magicka, set MAGICKA_CONTENT," >&2
+  echo "or run ./play.sh in a terminal to search Steam and choose." >&2
+  exit 1
+}
 
 MODE=offline
 ADDRESS=127.0.0.1:17700
 LEVEL=
 EXTRA=()
 SKIP_BUILD=false
+PRINT_CONTENT=false
 EXPORT_ONLY=false
 RECORD=false
 MODS=load-order
@@ -72,6 +186,7 @@ while [ $# -gt 0 ]; do
       MODS=$2; shift 2 ;;
     --no-mods) MODS=none; shift ;;
     --skip-build) SKIP_BUILD=true; shift ;;
+    --print-content) PRINT_CONTENT=true; shift ;;
     --export-only) EXPORT_ONLY=true; shift ;;
     --help|-h)
       cat <<'EOF'
@@ -84,6 +199,7 @@ Usage:
             [--role player|spectator|dm|invader]
   ./play.sh --skip-build ...
   ./play.sh --export-only                build and refresh the asset cache, then exit
+  ./play.sh --print-content              find the game files (Steam, .env), print the path, exit
   ./play.sh --mods id1,id2 ...           enable these mods instead of load_order.toml
   ./play.sh --no-mods ...                play without mods
 Hosts (--server/--host) accept --lobby players=8,hotjoin=off,spectators=on,dm=on,invaders=on.
@@ -118,7 +234,8 @@ case "$MODS" in
   *) MOD_ARGS=(--mods "$REWRITE/mods" --enable "$MODS") ;;
 esac
 
-[ -d "$CONTENT" ] || { echo "retail content missing: $CONTENT" >&2; exit 1; }
+resolve_content
+if [ "$PRINT_CONTENT" = true ]; then printf '%s\n' "$CONTENT"; exit 0; fi
 
 if [ "$MODE" = server ]; then
   if [ "$SKIP_BUILD" = false ]; then

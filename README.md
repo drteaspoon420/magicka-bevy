@@ -39,16 +39,26 @@ match it closely, while others are approximations or still missing.
 
 ## Getting started
 
-Link your game installation into the repository root as `Magicka` (the folder that
-contains `Content/`), or point `MAGICKA_CONTENT` at its `Content` folder:
-
 ```sh
-ln -s "/path/to/steamapps/common/Magicka" Magicka
-# or: export MAGICKA_CONTENT="/path/to/steamapps/common/Magicka/Content"
-
 ./play.sh            # build, convert assets on first run, open the main menu
 ./play.sh --help     # levels, hosting, joining, mods and other options
 ```
+
+On first run, `play.sh` searches your Steam libraries for Magicka, including other
+drives listed in Steam's `libraryfolders.vdf` and Flatpak or Snap installs. It asks
+before using what it finds. If nothing is found, it asks for the install folder.
+You can save your choice to `.env` in the repository root, and later runs use it
+without asking. `.env` is ignored by git. To choose again, delete the
+`MAGICKA_CONTENT` line.
+
+The game files are looked up in this order:
+
+1. `MAGICKA_CONTENT` in the environment (the game's `Content` folder)
+2. `MAGICKA_CONTENT` saved in `.env`
+3. A game install linked or copied into the repository as `./Magicka`
+4. A Steam library search
+
+`./play.sh --print-content` shows which folder will be used, without building.
 
 The first run builds in release mode and converts the game's assets into `.cache/`.
 This takes a while. Use `MAGICKA_CACHE` to put the cache somewhere else.
@@ -100,10 +110,12 @@ cargo run --locked -p magicka-script --bin magicka-modtool -- \
 ```sh
 cargo check --locked
 cargo test --locked
+python3 tools/test_play_sh.py   # play.sh game-file discovery
 ```
 
 Most tests run against the original game data, so the full suite needs your game
-install: link it as `./Magicka` or set `MAGICKA_CONTENT` to its `Content` folder.
+install. Run `./play.sh` once and save to `.env`, link the game as `./Magicka`, or set
+`MAGICKA_CONTENT` to its `Content` folder.
 Without it, many tests fail with "file not found".
 
 This repository is published from a separate, private research workspace. Commits
