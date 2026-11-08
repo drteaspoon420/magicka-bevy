@@ -44,7 +44,14 @@ match it closely, while others are approximations or still missing.
 ./play.sh --help     # levels, hosting, joining, mods and other options
 ```
 
-On first run, `play.sh` searches your Steam libraries for Magicka, including other
+On Windows, use `play.cmd` (or `.\play.ps1` in PowerShell) with the same options.
+`play.cmd` works even where PowerShell scripts are blocked. It finds Steam through
+the registry and Steam's library list. The Windows launcher has been checked for
+Windows PowerShell 5.1 and tested on PowerShell 7, but it has not yet been run on
+a Windows PC. The game is built with the Microsoft Rust toolchain: install Rust
+with rustup and accept its Visual Studio Build Tools prompt.
+
+On first run, the launcher searches your Steam libraries for Magicka, including other
 drives listed in Steam's `libraryfolders.vdf` and Flatpak or Snap installs. It asks
 before using what it finds. If nothing is found, it asks for the install folder.
 You can save your choice to `.env` in the repository root, and later runs use it
@@ -58,7 +65,7 @@ The game files are looked up in this order:
 3. A game install linked or copied into the repository as `./Magicka`
 4. A Steam library search
 
-`./play.sh --print-content` shows which folder will be used, without building.
+`--print-content` shows which folder will be used, without building.
 
 The first run builds in release mode and converts the game's assets into `.cache/`.
 This takes a while. Use `MAGICKA_CACHE` to put the cache somewhere else.
@@ -110,7 +117,7 @@ cargo run --locked -p magicka-script --bin magicka-modtool -- \
 ```sh
 cargo check --locked
 cargo test --locked
-python3 tools/test_play_sh.py   # play.sh game-file discovery
+python3 tools/test_play_scripts.py   # play.sh / play.ps1 launchers
 ```
 
 Most tests run against the original game data, so the full suite needs your game

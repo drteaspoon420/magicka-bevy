@@ -239,7 +239,7 @@ if [ "$PRINT_CONTENT" = true ]; then printf '%s\n' "$CONTENT"; exit 0; fi
 
 if [ "$MODE" = server ]; then
   if [ "$SKIP_BUILD" = false ]; then
-    cargo build --locked --offline -j1 --release --manifest-path "$REWRITE/Cargo.toml" -p magicka-runtime --bin magicka-server
+    cargo build --locked -j1 --release --manifest-path "$REWRITE/Cargo.toml" -p magicka-runtime --bin magicka-server
   fi
   exec "$BIN/magicka-server" --content "$CONTENT" --level "$LEVEL" --bind "$ADDRESS" "${MOD_ARGS[@]}" "${EXTRA[@]}"
 fi
@@ -260,15 +260,12 @@ echo "== building (release) =="
 # debug-ui adds the experimental egui developer menu (F1) to the demo build.
 export RUST_MIN_STACK="${RUST_MIN_STACK:-33554432}"
 if [ "$SKIP_BUILD" = false ]; then
-  cargo build --locked --offline -j1 --release --manifest-path "$REWRITE/Cargo.toml" \
+  cargo build --locked -j1 --release --manifest-path "$REWRITE/Cargo.toml" \
     -p magicka-viewer -p magicka-content --features magicka-viewer/debug-ui
 fi
 
-# Each export step keeps a manifest in $EXPORTS: its version, then every file
-# it produced. A step runs again when its version changes (re-exporting
-# everything) or when any listed file is missing (exporting only what is
-# missing, --missing). The legacy argument is the version an existing cache
-# had under the old marker files, so it is completed rather than rebuilt.
+# Asset export steps and their versions live in tools/asset-exports.txt, shared
+# with play.ps1; that file explains the manifest and version rules.
 EXPORTS=$CACHE/exports
 manifest_complete() {
   local file
@@ -276,120 +273,46 @@ manifest_complete() {
     [ -e "$file" ] || return 1
   done < <(tail -n +2 "$1")
 }
-export_step() { # export_step NAME VERSION LEGACY_VERSION command...
-  local name=$1 version=$2 previous=$3
-  shift 3
+legacy_version() { # legacy_version exists:PATH|stamp:PATH|-
+  case "$1" in
+    exists:*) [ -e "$CACHE/${1#exists:}" ] && echo 1 || true ;;
+    stamp:*) cat "$CACHE/${1#stamp:}" 2>/dev/null || true ;;
+  esac
+}
+export_step() { # export_step NAME VERSION LEGACY PROGRAM ARGUMENTS...
+  local name=$1 version=$2 previous
+  previous=$(legacy_version "$3")
+  local program=$BIN/$4
+  shift 4
+  local args=() arg
+  for arg in "$@"; do
+    arg=${arg//\{content\}/"$CONTENT"}
+    args+=("${arg//\{cache\}/"$CACHE"}")
+  done
   local manifest=$EXPORTS/$name.txt
   if [ -f "$manifest" ]; then
     previous=$(head -n 1 "$manifest")
     [ "$previous" = "$version" ] && manifest_complete "$manifest" && return 0
   fi
-  local missing=()
   if [ "$previous" = "$version" ]; then
     echo "== exporting missing $name =="
-    missing=(--missing)
+    args+=(--missing)
   else
     echo "== exporting $name =="
   fi
   mkdir -p "$EXPORTS"
-  "$@" "${missing[@]}" --manifest "$manifest.tmp"
+  "$program" "${args[@]}" --manifest "$manifest.tmp"
   { echo "$version"; cat "$manifest.tmp"; } > "$manifest"
   rm -f "$manifest.tmp"
 }
-model_step() { # model_step NAME VERSION LEGACY_VERSION model-gltf arguments...
-  local name=$1 version=$2 previous=$3
-  shift 3
-  export_step "$name" "$version" "$previous" "$BIN/model-gltf" "$CONTENT" "$CACHE/textures" "$CACHE/gltf" "$@"
-}
-stamp() { cat "$CACHE/gltf/$1" 2>/dev/null || true; }
-# Single-asset steps existed before versioning: any old output counts as 1.
-exists() { [ -e "$CACHE/gltf/$1" ] && echo 1 || true; }
-
-# Every model step below was bumped once on 2026-11-02: packed XNA Color
-# COLOR0 vertex colours (VertexElementFormat.Color) are now exported.
-export_step textures 1 "$([ -d "$CACHE/textures" ] && echo 1)" \
-  "$BIN/tex-export" "$CONTENT" "$CACHE/textures"
-# Bump when level-gltf output changes so existing caches are re-exported
-# (2: liquid tangents/deep weight and magicka_liquid material extras;
-#  3: spec/emissive material extras for the original deferred lighting;
-#  4: material texture URIs; 5: lava material and initial freeze stream;
-#  6: shadow-only (invisible, shadow-casting) meshes).
-export_step levels 7 "$(stamp .level-export-version)" \
-  "$BIN/level-gltf" "$CONTENT" "$CACHE/textures" "$CACHE/gltf" --all
+while read -r -a step <&3; do
+  [ "${#step[@]}" -eq 0 ] || [[ "${step[0]}" == \#* ]] && continue
+  export_step "${step[@]}"
+done 3< "$REWRITE/tools/asset-exports.txt"
 # Custom scenery stays in the private cache; preserve hand-edited authored map data.
 if [[ "${LEVEL##*/}" == confluence.lvl && ! -f "$CACHE/gltf/Custom/Confluence/spruce.glb" ]]; then
   python3 "$REWRITE/tools/build-confluence.py" --assets-only
 fi
-# 4: skinned SpecularMap (material map) extras.
-# 5: native diffuse-alpha cutout (MASK).
-export_step characters 6 "$(stamp .character-export-version)" \
-  "$BIN/character-gltf" "$CONTENT" "$CACHE/textures" "$CACHE/gltf" --reference --all
-
-model_step missiles 2 "$(exists Models/Missiles)" --missiles
-# 2: native diffuse-alpha cutout (MASK).
-model_step physics-props 3 "$(stamp .physics-props-exported)" --physics
-# 4: item projectile models.
-# 5: native diffuse-alpha cutout (MASK).
-# 6: preserve native deferred material parameters on static equipment/projectiles.
-model_step equipment 7 "$(stamp .all-items-exported)" --items
-# 2: native diffuse-alpha cutout (MASK).
-model_step gibs 3 "$(stamp .gibs-exported)" --gibs
-
-# Books are not referenced by Item assets, so --items does not export them.
-model_step magick-book 2 "$(exists Models/Items_Wizard/magickbook_major.glb)" \
-  Models/Items_Wizard/magickbook_major
-# Assatur's staff (StaffRenderData; a static Model drawn at the staff joint).
-model_step assatur-staff 2 "$(exists Models/Bosses/assatur/assatur_staff.glb)" \
-  Models/Bosses/assatur/assatur_staff
-# Skinned magick models drawn by their entities (Tornado, Summon Phoenix).
-model_step magick-models 2 "$(exists Models/Magicks/Phoenix.glb)" Models/Magicks/tornado \
-  "Models/Magicks/tornado_debri@Models/Magicks/tornado" Models/Magicks/Phoenix
-# Wave pillars: earthBarrier0's mesh with rockpillar_animation's clips.
-model_step wave-pillars 2 "$(exists "Models/Effects/earthBarrier0_mesh+rockpillar_animation.glb")" \
-  "Models/Effects/earthBarrier0_mesh@@Models/Effects/rockpillar_animation"
-
-# Magicka's animated mouse cursors (Cursors/*.ani next to Content).
-export_step cursors 1 "$([ -f "$CACHE/cursors/cursors.json" ] && echo 1)" \
-  "$BIN/cursor-export" "$CONTENT/.." "$CACHE/cursors"
-
-# Summon Elemental's ElementalEgg draws the elemental mesh (posed at runtime).
-model_step elemental 2 "$(exists Models/Characters/Elemental/elemental_mesh.glb)" \
-  Models/Characters/Elemental/elemental_mesh
-# Death is a dedicated entity with an independently attached scythe.
-model_step death 2 "$(exists Models/Bosses/death/death.glb)" \
-  Models/Bosses/Death/Death Models/Bosses/Death/death_Scythe
-# Jormungandr is a dedicated boss, outside the character-template export.
-model_step jormungandr 2 "$(exists Models/Bosses/jormungandr/jormungandr.glb)" \
-  Models/Bosses/Jormungandr/Jormungandr
-# Grimnir's mesh uses the separate animation model's skeleton and clips.
-model_step grimnir 2 "$(exists Models/Bosses/grimnir/grimnir_mesh.glb)" \
-  Models/Bosses/grimnir/grimnir_mesh@Models/Bosses/grimnir/grimnir_animation
-# The Machine boss (Havindr) and the bound king, posed at runtime.
-model_step the-machine 2 "$(exists Models/Bosses/themachine/themachine.glb)" \
-  Models/Bosses/theMachine/themachine Models/Characters/Human/King_animation
-# Fafnir (Ruins) and its falling ceiling debris.
-model_step fafnir 2 "$(exists Models/Bosses/fafnir/fafnir_mesh.glb)" \
-  "Models/Bosses/fafnir/fafnir_mesh@Models/Bosses/fafnir/fafnir_animation" Models/Bosses/fafnir/Ceiling_Debri
-# Tsar bosses: Parker (Tsar_WizardCastle), Cthulhu and its tentacles (Tsar_Rlyeh).
-model_step tsar-bosses 2 "$(exists Models/Bosses/parker/parker.glb)" \
-  "Models/Bosses/parker/parker@Models/Bosses/parker/parker_animation" \
-  "Models/Bosses/cthulhu/cthulhu_mesh@Models/Bosses/cthulhu/cthulhu_animations" \
-  "Models/Bosses/cthulhu/tentacle_mesh@Models/Bosses/cthulhu/tentacle_animations"
-
-# Spell mines, barriers and other effect models.
-# 2: magicka_skinned extras (mine overlay tint, material map).
-# 5: barrier rune discs and the weapon IceBlade.
-# 6: campaign dispensers.
-# 7: Entangle_web (Parker's webs).
-model_step effect-models 8 "$(stamp .effect-models-version)" Models/Effects/mine \
-  "Models/Effects/earthBarrier0_mesh@Models/Effects/earthBarrier_animation" \
-  "Models/Effects/iceBarrier0_mesh@Models/Effects/iceBarrier_animation" \
-  Models/Effects/icebarrier_geyser Models/Effects/icebarrier_tesla \
-  Models/Effects/iceBarrier_earth Models/Effects/earthBarrier_volcano \
-  Models/Effects/combined_armor Models/Effects/armor_aura \
-  Models/Effects/runesArcane Models/Effects/runesLife Models/Effects/Ice_Blade \
-  Models/Effects/SpiderHole Models/Effects/GoblinTent Models/Effects/SpiderEggs \
-  Models/Effects/Entangle_web
 
 if [ "$EXPORT_ONLY" = true ]; then
   echo "== asset cache up to date =="
