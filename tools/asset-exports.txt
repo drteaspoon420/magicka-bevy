@@ -21,6 +21,8 @@
 # colours (VertexElementFormat.Color) are now exported.
 
 textures 1 exists:textures tex-export {content} {cache}/textures
+# The main-menu Tome: desk, camera rig, book, resting page and turning page.
+menu-tome 1 exists:gltf/UI/ToM/tome.glb model-gltf {content} {cache}/textures {cache}/gltf UI/ToM/background_mesh UI/ToM/background UI/ToM/tome UI/ToM/page UI/ToM/page_flip
 # Levels: 2 liquid tangents/deep weight and magicka_liquid material extras;
 # 3 spec/emissive material extras for the original deferred lighting;
 # 4 material texture URIs; 5 lava material and initial freeze stream;
@@ -42,6 +44,8 @@ gibs 3 stamp:gltf/.gibs-exported model-gltf {content} {cache}/textures {cache}/g
 magick-book 2 exists:gltf/Models/Items_Wizard/magickbook_major.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Items_Wizard/magickbook_major
 # Assatur's staff (StaffRenderData; a static Model drawn at the staff joint).
 assatur-staff 2 exists:gltf/Models/Bosses/assatur/assatur_staff.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/assatur/assatur_staff
+# Assatur's skinned body (RenderData, with its own clips); also Grimnir's summon.
+assatur 1 exists:gltf/Models/Bosses/assatur/assatur.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Bosses/assatur/assatur
 # Skinned magick models drawn by their entities (Tornado, Summon Phoenix).
 magick-models 2 exists:gltf/Models/Magicks/Phoenix.glb model-gltf {content} {cache}/textures {cache}/gltf Models/Magicks/tornado Models/Magicks/tornado_debri@Models/Magicks/tornado Models/Magicks/Phoenix
 # Wave pillars: earthBarrier0's mesh with rockpillar_animation's clips.
