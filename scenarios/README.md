@@ -7,7 +7,7 @@ not modify retail content and are not levels exported for the original game.
 From the repository root, launch the feature lab with:
 
 ```sh
-./demo.sh "$PWD/scenarios/feature-lab.lvl" --debug-menu
+./play.sh "$PWD/scenarios/feature-lab.lvl" --debug-menu
 ```
 
 F1 opens the debug launcher. The Levels window includes these scenarios, and

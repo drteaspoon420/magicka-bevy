@@ -1,4 +1,4 @@
-// xWMA voices decode through FFmpeg. Resolve it as demo.sh does: an explicit
+// xWMA voices decode through FFmpeg. Resolve it as play.sh does: an explicit
 // MAGICKA_FFMPEG, then PATH, then a Nix ffmpeg-headless store path (Nix does
 // not put store packages on PATH). The choice is exported once per test binary.
 use std::{

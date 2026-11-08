@@ -220,7 +220,7 @@ pub(super) fn section(
     });
     ui.label("Apply resets the player in place. Colour updates the preview immediately.");
     if menu.staffs.is_empty() || menu.weapons.is_empty() {
-        ui.label("Run ./demo.sh to export equipment models.");
+        ui.label("Run ./play.sh to export equipment models.");
     }
     if ui.button("Apply equipment").clicked() {
         let Some(paths) = menu.paths() else {

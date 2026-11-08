@@ -6,10 +6,10 @@ This is a rewrite map, not a level installed into the original game.
 From the repository root:
 
 ```sh
-./demo.sh "$PWD/scenarios/confluence.lvl"
+./play.sh "$PWD/scenarios/confluence.lvl"
 # Optional inspection tools:
-./demo.sh "$PWD/scenarios/confluence.lvl" --debug-menu
-./demo.sh "$PWD/scenarios/confluence.lvl" --map-overview
+./play.sh "$PWD/scenarios/confluence.lvl" --debug-menu
+./play.sh "$PWD/scenarios/confluence.lvl" --map-overview
 ```
 
 The normal demo exports user-supplied assets and prepares this map's missing

@@ -2,18 +2,18 @@
 # Magicka rewrite demo: build the viewer, export any missing glTF assets from
 # the retail files in target/, then open the main menu (or play an explicit level).
 #
-#   ./demo.sh                     open the main menu
-#   ./demo.sh --skip-build        open the main menu using the existing build
-#   ./demo.sh Wizard_Castle.lvl   play another level (with its intro scripts)
-#   ./demo.sh Havindr.lvl --debug-menu   extra viewer flags pass through
+#   ./play.sh                     open the main menu
+#   ./play.sh --skip-build        open the main menu using the existing build
+#   ./play.sh Wizard_Castle.lvl   play another level (with its intro scripts)
+#   ./play.sh Havindr.lvl --debug-menu   extra viewer flags pass through
 #                                 (--debug-menu opens the debug menu at start)
-#   ./demo.sh --record            headless fire-spray capture → output/.cache/demo-cast/*.png
-#   ./demo.sh --mods boosted,example.arena   enable these mods (by Id)
-#   ./demo.sh --no-mods           play without mods
+#   ./play.sh --record            headless fire-spray capture → output/.cache/demo-cast/*.png
+#   ./play.sh --mods boosted,example.arena   enable these mods (by Id)
+#   ./play.sh --no-mods           play without mods
 # Mods load from output/rewrite/mods; by default the ones listed in
 # output/rewrite/mods/load_order.toml. Hosts and clients need the same mods.
 # Mod UI panels: F4 (number keys pick).
-#   CARGO_NET_OFFLINE=true ./demo.sh   build using only cached dependencies
+#   CARGO_NET_OFFLINE=true ./play.sh   build using only cached dependencies
 #
 # Controls (original default bindings):
 #   hold left mouse   walk toward the cursor (click also advances dialog)
@@ -76,16 +76,16 @@ while [ $# -gt 0 ]; do
     --help|-h)
       cat <<'EOF'
 Usage:
-  ./demo.sh                              main menu
-  ./demo.sh [level.lvl] [viewer options]
-  ./demo.sh --server [127.0.0.1:17700] [--level level.lvl] [--no-scripts]
-  ./demo.sh --host [127.0.0.1:17700] [--level level.lvl] [--debug-menu]
-  ./demo.sh --join 127.0.0.1:17700 [--name Name] [--character Wizard] [--robe-colour R,G,B]
+  ./play.sh                              main menu
+  ./play.sh [level.lvl] [viewer options]
+  ./play.sh --server [127.0.0.1:17700] [--level level.lvl] [--no-scripts]
+  ./play.sh --host [127.0.0.1:17700] [--level level.lvl] [--debug-menu]
+  ./play.sh --join 127.0.0.1:17700 [--name Name] [--character Wizard] [--robe-colour R,G,B]
             [--role player|spectator|dm|invader]
-  ./demo.sh --skip-build ...
-  ./demo.sh --export-only                build and refresh the asset cache, then exit
-  ./demo.sh --mods id1,id2 ...           enable these mods instead of load_order.toml
-  ./demo.sh --no-mods ...                play without mods
+  ./play.sh --skip-build ...
+  ./play.sh --export-only                build and refresh the asset cache, then exit
+  ./play.sh --mods id1,id2 ...           enable these mods instead of load_order.toml
+  ./play.sh --no-mods ...                play without mods
 Hosts (--server/--host) accept --lobby players=8,hotjoin=off,spectators=on,dm=on,invaders=on.
 Four players and open hot join are the defaults (Versus locks hot join).
 Networking defaults to the authored feature lab. Games are open unless MAGICKA_PASSPHRASE

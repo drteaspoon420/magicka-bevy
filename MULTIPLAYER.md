@@ -111,10 +111,10 @@ four as the default and makes the rest opt-in (`research/multiplayer-scaling.md`
 
 ```sh
 # Up to 12 players, joining in progress locked (PvP), dungeon masters allowed:
-./demo.sh --skip-build --server 127.0.0.1:17700 --lobby players=12,hotjoin=off,dm=on,invaders=on
-./demo.sh --skip-build --join 127.0.0.1:17700 --name Watcher --role spectator
-./demo.sh --skip-build --join 127.0.0.1:17700 --name GM --role dm
-./demo.sh --skip-build --join 127.0.0.1:17700 --name Goblin --role invader
+./play.sh --skip-build --server 127.0.0.1:17700 --lobby players=12,hotjoin=off,dm=on,invaders=on
+./play.sh --skip-build --join 127.0.0.1:17700 --name Watcher --role spectator
+./play.sh --skip-build --join 127.0.0.1:17700 --name GM --role dm
+./play.sh --skip-build --join 127.0.0.1:17700 --name Goblin --role invader
 ```
 
 - In-game settings offer up to 16 players. A dedicated server can be configured
@@ -165,17 +165,17 @@ What that protects depends on the kind of game:
 ```sh
 # A private dedicated server. Secrets come from a file or the environment,
 # because other local users can read command lines.
-MAGICKA_PASSPHRASE='correct-horse-battery' ./demo.sh --skip-build --server 0.0.0.0:17700
-MAGICKA_PASSPHRASE='correct-horse-battery' ./demo.sh --skip-build --join 203.0.113.7:17700 --name Alice
-./demo.sh --skip-build --server 0.0.0.0:17700 --passphrase-file ~/magicka-passphrase
+MAGICKA_PASSPHRASE='correct-horse-battery' ./play.sh --skip-build --server 0.0.0.0:17700
+MAGICKA_PASSPHRASE='correct-horse-battery' ./play.sh --skip-build --join 203.0.113.7:17700 --name Alice
+./play.sh --skip-build --server 0.0.0.0:17700 --passphrase-file ~/magicka-passphrase
 
 # Dungeon masters control the game. On anything but a game among friends, also
 # require a credential (MAGICKA_DM_KEY or --dm-key-file, on both ends).
-MAGICKA_DM_KEY='keys-to-the-dungeon' ./demo.sh --skip-build --server 0.0.0.0:17700 --lobby dm=on
+MAGICKA_DM_KEY='keys-to-the-dungeon' ./play.sh --skip-build --server 0.0.0.0:17700 --lobby dm=on
 
 # Dedicated server only: refuse addresses, or change how many connections one
 # address may hold (default 16; a household or LAN party can share one address).
-./demo.sh --skip-build --server 0.0.0.0:17700 --ban 203.0.113.9,198.51.100.4 --connections-per-address 4
+./play.sh --skip-build --server 0.0.0.0:17700 --ban 203.0.113.9,198.51.100.4 --connections-per-address 4
 ```
 
 In the menu, the Online page's Passphrase button sets it for both hosting and
@@ -200,19 +200,19 @@ firewall: a flood of forged packets still costs the host time to discard.
 Start the server in terminal 1:
 
 ```sh
-./demo.sh --skip-build --server 127.0.0.1:17700 --demo-goblin --demo-goblin-order idle
+./play.sh --skip-build --server 127.0.0.1:17700 --demo-goblin --demo-goblin-order idle
 ```
 
 Start Alice in terminal 2:
 
 ```sh
-./demo.sh --skip-build --join 127.0.0.1:17700 --name Alice --character Wizard --robe-colour 0.2,0.4,0.8
+./play.sh --skip-build --join 127.0.0.1:17700 --name Alice --character Wizard --robe-colour 0.2,0.4,0.8
 ```
 
 Start Bob in terminal 3:
 
 ```sh
-./demo.sh --skip-build --join 127.0.0.1:17700 --name Bob --character Wizard_Samurai --robe-colour 0.8,0.3,0.2
+./play.sh --skip-build --join 127.0.0.1:17700 --name Bob --character Wizard_Samurai --robe-colour 0.8,0.3,0.2
 ```
 
 All three use the authored feature lab by default. The optional idle goblin is
@@ -225,7 +225,7 @@ for the map alone. Stop the dedicated server with Ctrl+C.
 Stop the dedicated server before starting this alternative on the same port:
 
 ```sh
-./demo.sh --skip-build --host 127.0.0.1:17700 --name Host --debug-menu --demo-goblin
+./play.sh --skip-build --host 127.0.0.1:17700 --name Host --debug-menu --demo-goblin
 ```
 
 Joining clients use the same commands above. A playable host reserves slot zero

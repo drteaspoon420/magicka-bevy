@@ -46,8 +46,8 @@ contains `Content/`), or point `MAGICKA_CONTENT` at its `Content` folder:
 ln -s "/path/to/steamapps/common/Magicka" Magicka
 # or: export MAGICKA_CONTENT="/path/to/steamapps/common/Magicka/Content"
 
-./demo.sh            # build, convert assets on first run, open the main menu
-./demo.sh --help     # levels, hosting, joining, mods and other options
+./play.sh            # build, convert assets on first run, open the main menu
+./play.sh --help     # levels, hosting, joining, mods and other options
 ```
 
 The first run builds in release mode and converts the game's assets into `.cache/`.
@@ -60,9 +60,9 @@ cast on yourself; Space to skip cutscenes; Esc to pause.
 ## Multiplayer
 
 ```sh
-./demo.sh --host 0.0.0.0:17700              # play and host
-./demo.sh --join 192.168.1.10:17700          # join a host
-./demo.sh --server 0.0.0.0:17700 --level Havindr.lvl   # headless dedicated server
+./play.sh --host 0.0.0.0:17700              # play and host
+./play.sh --join 192.168.1.10:17700          # join a host
+./play.sh --server 0.0.0.0:17700 --level Havindr.lvl   # headless dedicated server
 ```
 
 See [MULTIPLAYER.md](MULTIPLAYER.md) for lobbies, passphrases and server settings.

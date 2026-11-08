@@ -3,7 +3,7 @@
 //! `--missing` skips outputs that already exist, so an interrupted or
 //! partially deleted cache can be completed without re-exporting everything.
 //! `--manifest <file>` lists every output the run wrote or found present, one
-//! absolute path per line, so callers (`demo.sh`) can cheaply verify the
+//! absolute path per line, so callers (`play.sh`) can cheaply verify the
 //! cache on later runs.
 use std::path::{Path, PathBuf};
 
