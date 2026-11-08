@@ -23,6 +23,7 @@ that kind of work. Bug reports are welcome.
 
 ## Status
 
+Has only been tested on Linux environment. Specifically on Bazzite.
 Work in progress. Single-player campaign levels, spell casting, magicks, the menus
 and online/LAN co-op are playable. Fidelity to the original varies: some systems
 match it closely, while others are approximations or still missing.
@@ -70,6 +71,7 @@ are not included in this repository.
 
 ## Mods
 
+Modding is Extremely experimental and untested. It was merely a test to make sure we can do it. API is very early one and practically untested.
 Mods add definitions, server-side Lua and UI panels. Samples are in `mods/`, and
 [docs/MODDING.md](docs/MODDING.md) explains the format. Check a mod with:
 
