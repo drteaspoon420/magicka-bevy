@@ -6,7 +6,6 @@ use magicka_runtime::{
     scene_loading::custom_hash,
     scene_world::{boss_live::BossRef, grimnir_live::GrimnirHost},
 };
-use std::path::Path;
 const DT: f32 = 1. / 60.;
 fn host(s: &PlaySession) -> &GrimnirHost {
     s.world
@@ -32,7 +31,7 @@ fn step(s: &mut PlaySession) {
     }
 }
 fn session() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

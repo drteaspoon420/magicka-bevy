@@ -2,7 +2,7 @@
 //! (research/magick-hint.md). Retail tests skip when content is absent.
 use magicka_runtime::{avatar::PlayerInput, play_session::PlaySession, tome_magick::*};
 use magicka_sim::spells::MagickType as M;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn only(set: &'static [M]) -> impl Fn(M) -> bool {
     move |t| set.contains(&t)
@@ -157,9 +157,7 @@ fn every_magick_has_an_english_name() {
 fn content() -> Option<PathBuf> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir().then_some(root)
 }
 

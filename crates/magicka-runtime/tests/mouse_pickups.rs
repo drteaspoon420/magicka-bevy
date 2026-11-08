@@ -7,8 +7,7 @@ use magicka_runtime::{
 use magicka_sim::spray_pulse::Segment;
 
 fn content() -> Option<std::path::PathBuf> {
-    let path =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let path = magicka_content::retail_content_dir();
     path.is_dir().then_some(path)
 }
 fn ndc(s: &PlaySession, point: [f32; 3]) -> [f32; 2] {

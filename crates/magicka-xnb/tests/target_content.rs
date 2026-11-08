@@ -10,9 +10,7 @@ use std::path::{Path, PathBuf};
 fn content_dir() -> Option<PathBuf> {
     let p = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_xnb::retail_content_dir());
     p.is_dir().then_some(p)
 }
 

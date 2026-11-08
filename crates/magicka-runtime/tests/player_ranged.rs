@@ -1,9 +1,9 @@
 use magicka_runtime::{avatar::PlayerInput, play_session::PlaySession};
-use std::{collections::BTreeSet, path::Path};
+use std::collections::BTreeSet;
 const DT: f32 = 1.0 / 60.0;
 
 fn session(weapon: &str, pickup: bool) -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

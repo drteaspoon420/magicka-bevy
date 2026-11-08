@@ -72,10 +72,7 @@ fn live_scene_missile_flight_damages_round_shield() {
     };
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(std::path::PathBuf::from)
-        .unwrap_or_else(|| {
-            std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         return;
     }
@@ -135,10 +132,7 @@ fn live_scene_missile_flight_damages_round_shield() {
 fn ice_missile_contact_damages_a_retail_wizard_and_pierces_without_second_hit() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(std::path::PathBuf::from)
-        .unwrap_or_else(|| {
-            std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         return;
     }

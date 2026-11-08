@@ -3,10 +3,10 @@ use magicka_runtime::{
     npc_combat::{AbilityBody, CombatAbility},
     play_content::load_character,
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn content() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 
 #[test]

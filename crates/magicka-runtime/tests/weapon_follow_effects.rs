@@ -1,11 +1,10 @@
 use magicka_runtime::{avatar::PlayerInput, play_session::PlaySession, scene_loading::custom_hash};
-use std::path::Path;
 
 const DT: f32 = 1.0 / 60.0;
 
 #[test]
 fn surt_swing_effects_stop_after_each_completed_attack() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

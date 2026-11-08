@@ -4,7 +4,7 @@ use magicka_runtime::{
     cutscene::{key_skips_cutscene, CutsceneState},
     play_session::PlaySession,
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 const DT: f32 = 1.0 / 60.0;
 
@@ -43,9 +43,7 @@ fn wizard_castle_tutorial_intro_ends_without_dialog_input() {
 fn content() -> Option<PathBuf> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir().then_some(root)
 }
 

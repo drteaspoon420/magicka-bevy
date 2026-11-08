@@ -23,7 +23,7 @@ fn expected_refusal(line: &str) -> bool {
 fn every_builtin_magick_runs_from_lua() {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut s = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

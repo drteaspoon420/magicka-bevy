@@ -6,8 +6,7 @@ use magicka_runtime::scene_loading::custom_hash;
 use std::path::PathBuf;
 
 fn content() -> Option<PathBuf> {
-    let p =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let p = magicka_content::retail_content_dir();
     p.is_dir().then_some(p)
 }
 fn session() -> Option<PlaySession> {

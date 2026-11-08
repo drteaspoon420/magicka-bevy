@@ -376,8 +376,7 @@ mod tests {
 
     #[test]
     fn every_campaign_level_after_the_first_and_both_dungeons_have_a_map() {
-        let content = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             eprintln!("retail content absent; skipping");
             return;

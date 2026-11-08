@@ -64,9 +64,9 @@ fn lua_level_runs_an_encounter_through_native_triggers_and_late_joiners_see_it()
         "#,
     );
     write(&dir, "mods/arena/scripts/vscripts/arena/init.lua", "");
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

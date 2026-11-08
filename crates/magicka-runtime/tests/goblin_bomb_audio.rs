@@ -3,13 +3,13 @@ use magicka_runtime::{
     play_session::PlaySession,
     scene_loading::custom_hash,
 };
-use std::{collections::BTreeMap, path::Path};
+use std::collections::BTreeMap;
 #[path = "support/ffmpeg.rs"]
 mod ffmpeg;
 
 #[test]
 fn authored_bomb_plays_throw_following_fuse_and_surviving_explosion_cues() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() || !ffmpeg::require() {
         return;
     }
@@ -140,7 +140,7 @@ fn authored_bomb_plays_throw_following_fuse_and_surviving_explosion_cues() {
 #[test]
 fn a_real_player_fire_spray_detonates_an_authored_bomb_before_its_timer() {
     use magicka_runtime::avatar::PlayerInput;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -274,7 +274,7 @@ fn bomb_damage_condition_uses_the_authored_fire_threshold() {
         damage::{attack, Damage},
         spells::Elements as E,
     };
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

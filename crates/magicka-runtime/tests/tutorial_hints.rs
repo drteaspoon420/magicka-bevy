@@ -1,12 +1,11 @@
 //! Opening tutorial dismissal must run the retail continuation, not just hide UI.
 use magicka_runtime::{avatar::PlayerInput, play_session::PlaySession};
-use std::path::Path;
 
 #[test]
 fn tutorial_actions_gate_conjuring_cast_modes_and_empty_queue_push() {
     use magicka_runtime::toggle_action::ToggleAction;
     use magicka_sim::{damage::CastType, spells::Elements as E};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -102,8 +101,7 @@ fn tutorial_actions_gate_conjuring_cast_modes_and_empty_queue_push() {
 fn castle_script_coverage_report() {
     use magicka_runtime::scene_script::{ActionDefinition, ConditionDefinition, SceneScriptLayout};
     use std::collections::BTreeMap;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../../../target/Magicka/Content/Levels/WizardCastle");
+    let root = magicka_content::retail_content_dir().join("Levels/WizardCastle");
     if !root.is_dir() {
         return;
     }
@@ -136,7 +134,7 @@ fn castle_script_coverage_report() {
 fn castle_script_unlocks_reach_permissions_notices_and_next_scene() {
     use magicka_runtime::{scene_script::ActionDefinition, toggle_action::ToggleKind};
     use magicka_sim::spells::MagickType;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -192,7 +190,7 @@ fn castle_script_unlocks_reach_permissions_notices_and_next_scene() {
 
 #[test]
 fn opening_hint_dismissal_unlocks_room_and_shows_interaction_hint() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -230,7 +228,7 @@ fn opening_hint_dismissal_unlocks_room_and_shows_interaction_hint() {
 #[test]
 fn castle_end_of_tutorial_grants_meteor_shower() {
     use magicka_sim::spells::MagickType;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

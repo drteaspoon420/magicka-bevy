@@ -8,7 +8,7 @@ use std::path::PathBuf;
 fn frost_comet_storm_drops_ice_comets_from_the_sky() {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut s = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

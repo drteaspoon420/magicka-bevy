@@ -240,8 +240,7 @@ mod tests {
     use crate::ruleset::{VersusMode, VersusSettings};
 
     fn root() -> Option<std::path::PathBuf> {
-        let r = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let r = magicka_content::retail_content_dir();
         r.is_dir().then_some(r)
     }
 

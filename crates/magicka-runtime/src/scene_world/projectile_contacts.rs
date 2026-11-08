@@ -24,8 +24,7 @@ impl ProjectileLaunchHost for Launches {
     }
 }
 fn session(level: &str) -> Option<PlaySession> {
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

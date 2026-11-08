@@ -32,9 +32,7 @@ fn animated(part: &AnimatedLevelPart, count: &mut usize, errors: &mut Vec<String
 fn retail_level_collision_meshes_construct() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

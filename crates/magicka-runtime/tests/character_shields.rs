@@ -5,15 +5,13 @@ use magicka_sim::{
     shield_entity::{ShieldKind, SHIELD_COLOR},
     spells::{Elements as E, Spell},
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 const DT: f32 = 1.0 / 60.0;
 fn session() -> Option<PlaySession> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         return None;
     }
@@ -266,9 +264,7 @@ fn npc_capsule_is_blocked_by_wall_through_the_same_live_solver() {
     let Some(mut s) = session() else { return };
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     let area = load_start_scene(&root, "Havindr.lvl")
         .unwrap()
         .start

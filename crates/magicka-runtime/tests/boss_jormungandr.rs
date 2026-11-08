@@ -17,7 +17,7 @@ use std::{
 };
 const DT: f32 = 1. / 60.;
 fn root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 fn actor() -> Option<Jormungandr> {
     if !root().is_dir() {

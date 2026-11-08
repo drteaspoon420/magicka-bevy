@@ -22,9 +22,7 @@ fn standalone_headless_server_assigns_and_moves_a_named_player() {
     let child = Command::new(env!("CARGO_BIN_EXE_magicka-server"))
         .args([
             "--content",
-            root.join("../../../../target/Magicka/Content")
-                .to_str()
-                .unwrap(),
+            magicka_content::retail_content_dir().to_str().unwrap(),
             "--level",
             root.join("../../scenarios/feature-lab.lvl")
                 .canonicalize()

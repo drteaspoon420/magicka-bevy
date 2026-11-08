@@ -9,9 +9,7 @@ use std::path::{Path, PathBuf};
 fn retail_assets_supply_egg_geometry_pose_and_cached_reinitialization() {
     let content = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !content.is_dir() {
         return;
     }

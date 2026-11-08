@@ -3,11 +3,10 @@
 use magicka_content::common::SpecialAbility;
 use magicka_runtime::item_special::SpecialInvocation;
 use magicka_runtime::play_session::PlaySession;
-use std::path::Path;
 const DT: f32 = 1. / 60.;
 
 fn session(template: &str) -> Option<(PlaySession, u16)> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

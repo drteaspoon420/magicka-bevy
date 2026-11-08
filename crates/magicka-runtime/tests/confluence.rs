@@ -72,8 +72,7 @@ fn invalid_visuals_fail_at_runtime_load() {
 }
 #[test]
 fn map_loads_in_live_session_without_scenario_scripts() {
-    let content =
-        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

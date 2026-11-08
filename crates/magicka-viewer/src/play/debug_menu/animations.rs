@@ -155,8 +155,7 @@ mod tests {
 
     #[test]
     fn preview_advances_and_scrubs_pose_without_gameplay_then_restores_controller() {
-        let content =
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             return;
         }

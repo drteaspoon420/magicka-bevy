@@ -10,7 +10,6 @@ use magicka_sim::{
     damage::{attack, Damage},
     spells::Elements,
 };
-use std::path::Path;
 const DT: f32 = 1. / 60.;
 fn host(s: &PlaySession) -> &DeathBossHost {
     s.world
@@ -31,7 +30,7 @@ fn step(s: &mut PlaySession) {
     assert!(s.script_error.is_none(), "{:?}", s.script_error);
 }
 fn battle() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

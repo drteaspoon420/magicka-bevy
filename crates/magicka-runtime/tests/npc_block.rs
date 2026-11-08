@@ -2,10 +2,10 @@
 //! and Character.BlockDamage on live NPCs. See research/npc-block.md.
 use magicka_content::character::{AbilityKind, ActionKind};
 use magicka_runtime::{npc_combat::CombatAbility, play_content::load_character};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn content() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 
 #[test]
@@ -299,7 +299,7 @@ mod live_session {
     const ANIMATION_BLOCK: u16 = 35;
 
     fn content() -> Option<PathBuf> {
-        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         root.is_dir().then_some(root)
     }
 

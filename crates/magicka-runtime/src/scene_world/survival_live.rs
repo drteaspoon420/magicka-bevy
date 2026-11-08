@@ -129,8 +129,7 @@ mod tests {
 
     #[test]
     fn delayed_reinforcements_block_wave_advance_then_final_wave_requests_victory() {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

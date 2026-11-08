@@ -5,8 +5,7 @@ use magicka_sim::{
 };
 
 pub(super) fn session() -> Option<(PlaySession, u16)> {
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

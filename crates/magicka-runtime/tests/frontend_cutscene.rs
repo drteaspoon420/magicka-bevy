@@ -164,8 +164,7 @@ fn missing_data_or_disabled_play_uses_the_same_fade_path() {
 
 #[test]
 fn retail_camera_catalogues_decode_and_sample_without_target_execution() {
-    let content =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

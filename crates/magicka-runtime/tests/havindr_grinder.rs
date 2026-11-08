@@ -1,10 +1,9 @@
 //! Town Grinder's authored guard-movement and cutscene-finish path.
 use magicka_runtime::{play_session::PlaySession, scene_loading::custom_hash};
-use std::path::Path;
 
 #[test]
 fn town_grinder_guards_reach_kill_box_and_release_cutscene() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;

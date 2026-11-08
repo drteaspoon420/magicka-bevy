@@ -102,8 +102,9 @@ cargo check --locked
 cargo test --locked
 ```
 
-Tests that need the original content look for `MAGICKA_CONTENT` and skip when it is
-not set. A few still expect the development environment's layout and skip as well.
+Most tests run against the original game data, so the full suite needs your game
+install: link it as `./Magicka` or set `MAGICKA_CONTENT` to its `Content` folder.
+Without it, many tests fail with "file not found".
 
 This repository is published from a separate, private research workspace. Commits
 here are periodic snapshots of that workspace, so history is coarse.

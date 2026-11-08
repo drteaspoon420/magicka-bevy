@@ -143,7 +143,7 @@ fn deliver(
 
 fn exercise_gameplay(mut send: impl FnMut(&PhysicsFrame)) {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let content = root.join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     assert!(
         content.is_dir(),
         "this integration test requires user-supplied content"

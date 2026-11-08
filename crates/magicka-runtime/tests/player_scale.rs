@@ -14,7 +14,7 @@ use std::{
 
 fn lab() -> Option<(PlaySession, String)> {
     let root = Path::new(env!("CARGO_MANIFEST_DIR"));
-    let content: PathBuf = root.join("../../../../target/Magicka/Content");
+    let content: PathBuf = magicka_content::retail_content_dir();
     if !content.is_dir() {
         eprintln!("retail content absent; skipping");
         return None;
@@ -177,7 +177,7 @@ fn real_clients_fill_a_configured_server() {
 /// A revive or a join rebuilds an avatar during a tick: it must not re-read the model.
 #[test]
 fn rebuilding_an_avatar_shares_the_parsed_model() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

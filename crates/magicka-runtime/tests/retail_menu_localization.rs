@@ -120,9 +120,7 @@ impl LanguageHost for Host {
 fn private_original_language_switch_reloads_fonts_before_owned_callbacks() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     let available = std::fs::read_dir(root.join("Languages"))
         .unwrap()
         .map(|e| e.unwrap())

@@ -47,8 +47,7 @@ fn knockback_kill_and_deflection_control_persistent_continuation() {
     assert!(!w.absorb_can_execute());
 }
 fn session() -> Option<(PlaySession, u16)> {
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

@@ -4,7 +4,7 @@ use magicka_runtime::{
     play_session::{PlaySession, SessionEvent},
     scene_loading::custom_hash,
 };
-use std::{collections::BTreeMap, path::Path};
+use std::collections::BTreeMap;
 
 const DT: f32 = 1. / 60.;
 
@@ -24,7 +24,7 @@ fn frame(session: &mut PlaySession, held: bool, area: bool) {
 
 #[test]
 fn player_force_and_area_push_redirect_an_ordinary_bomber_bomb_once() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

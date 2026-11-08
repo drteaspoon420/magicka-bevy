@@ -3,10 +3,10 @@
 //! sword and staff while the party was unarmed.
 use magicka_runtime::play_session::PlaySession;
 use magicka_runtime::scene_world::campaign_live::CampaignRequest;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn content() -> Option<PathBuf> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     root.is_dir().then_some(root)
 }
 fn items(s: &PlaySession, slot: usize) -> Vec<(i32, String)> {

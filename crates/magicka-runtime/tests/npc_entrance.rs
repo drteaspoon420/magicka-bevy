@@ -1,13 +1,10 @@
 //! Actual Havindr wall-entry spawns must play their authored spawn clip.
 use magicka_runtime::{character_motion::CharacterState, play_session::PlaySession};
-use std::{
-    collections::{BTreeMap, BTreeSet},
-    path::Path,
-};
+use std::collections::{BTreeMap, BTreeSet};
 
 #[test]
 fn havindr_orcs2_play_spawn_before_returning_to_live_ai() {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         eprintln!("retail content absent; skipping");
         return;
@@ -91,7 +88,7 @@ fn special_idle_does_not_replace_spawn_and_quick_replay_uses_same_state() {
         scene_script::{ActionDefinition, SceneScriptLayout},
         spawn_action::{SpawnState, SpawnedHealth},
     };
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

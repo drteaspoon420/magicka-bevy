@@ -73,8 +73,7 @@ fn indefinite_books_do_not_expire_and_decoder_matches_xml() {
     assert!(SpawnMagickAction::read([("magick", "35")]).is_err());
 }
 fn content() -> Option<std::path::PathBuf> {
-    let p =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let p = magicka_content::retail_content_dir();
     p.is_dir().then_some(p)
 }
 #[test]

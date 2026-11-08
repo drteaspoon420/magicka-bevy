@@ -31,8 +31,7 @@ mod tests {
     fn player_melee_hits_death_capsule_with_native_range_and_ethereal_rules() {
         use crate::npc_combat::{MeleeRequest, MeleeWeapon};
         use magicka_content::common::{Damage, Event, EventCollection, EventCondition};
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -137,8 +136,7 @@ mod tests {
 
     #[test]
     fn live_scythe_contacts_respect_immortality_and_synchronous_life_interrupt() {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

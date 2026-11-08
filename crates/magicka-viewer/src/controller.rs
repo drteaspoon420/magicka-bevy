@@ -1159,7 +1159,7 @@ mod tests {
     #[test]
     fn projected_pad_aim_round_trips_through_live_camera_and_runtime() {
         let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        let content = root.join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             eprintln!("live camera check requires user-supplied Magicka content");
             return;
@@ -1197,7 +1197,7 @@ mod tests {
     #[test]
     fn live_hud_tracks_the_owning_pad_and_never_inherits_another_pads_override() {
         let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        let content = root.join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             return;
         }

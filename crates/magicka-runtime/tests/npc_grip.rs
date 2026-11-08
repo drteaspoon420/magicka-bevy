@@ -4,10 +4,9 @@ use magicka_runtime::{
     animation_controller::animation_value, avatar::PlayerInput, character_motion::CharacterState,
     npc_combat::AbilityBody, play_session::PlaySession,
 };
-use std::path::Path;
 
 fn session() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

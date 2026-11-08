@@ -2,7 +2,6 @@
 use magicka_runtime::{
     play_session::PlaySession, scene_loading::custom_hash, scene_world::boss_live::BossRef,
 };
-use std::path::Path;
 
 fn defense(
     s: &PlaySession,
@@ -20,7 +19,7 @@ fn defense(
 
 #[test]
 fn houses_drive_the_icons_and_the_chieftain_drives_the_bar() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -81,7 +80,7 @@ fn house(s: &PlaySession, i: usize) -> Option<u16> {
 
 #[test]
 fn restored_house_icons_follow_the_restored_entities() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -119,7 +118,7 @@ fn restored_house_icons_follow_the_restored_entities() {
 /// checkpoint restores every house, the counter and the icons.
 #[test]
 fn destroyed_houses_return_on_checkpoint_restart() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -187,7 +186,7 @@ fn destroyed_houses_return_on_checkpoint_restart() {
 /// once it burns, "Torch house1" moves them on.
 #[test]
 fn torchers_attack_the_first_house() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -248,7 +247,7 @@ fn torchers_attack_the_first_house() {
 /// The skip-intro path into the raid (as the viewer QA scenario runs it).
 #[test]
 fn skip_intro_starts_the_raid() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

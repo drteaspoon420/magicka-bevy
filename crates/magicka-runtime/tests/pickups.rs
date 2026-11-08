@@ -68,8 +68,8 @@ fn equipment_swap_preserves_item_cooldowns_and_obeys_bound_equipment() {
         avatar::AvatarItem,
         play_content::{avatar_items, load_character},
     };
-    use std::path::Path;
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

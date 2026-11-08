@@ -53,9 +53,7 @@ fn model_name(xml: &str) -> Option<String> {
 fn retail_effect_actions_and_level_effects_resolve() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

@@ -410,9 +410,7 @@ fn conflagration_shield_rejection_retries_and_clients_do_not_apply_damage() {
 fn content() -> Option<PathBuf> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir().then_some(root)
 }
 fn frame(s: &mut PlaySession, input: PlayerInput) {

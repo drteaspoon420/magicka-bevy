@@ -25,9 +25,9 @@ fn damage_taken_and_max_health_properties_apply_natively_and_revert() {
         "mods/frail/scripts/npc/items/staff.kv",
         r#""Items" { "slow_staff" { "Retail" "staff_basic" "CooldownTime" "4" } }"#,
     );
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut s = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

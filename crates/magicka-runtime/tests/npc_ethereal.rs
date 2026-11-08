@@ -1,10 +1,9 @@
 use magicka_content::character::ActionKind;
 use magicka_runtime::{play_content::load_character, play_session::PlaySession};
-use std::path::Path;
 
 #[test]
 fn authored_ethereal_windows_inventory() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -29,7 +28,7 @@ fn authored_ethereal_windows_inventory() {
 
 #[test]
 fn daemon_ai_has_corporeal_windows_and_returns_to_ethereal() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

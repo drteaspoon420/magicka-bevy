@@ -5,8 +5,7 @@ use magicka_sim::{
 };
 
 fn session() -> crate::play_session::PlaySession {
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut s = crate::play_session::PlaySession::load(&root, "Havindr.lvl", "Wizard").unwrap();
     s.disable_scripts();
     s
@@ -596,8 +595,7 @@ fn goblin_warrior_mixed_earth_missiles_keep_physical_damage() {
 }
 
 fn equip_item(s: &mut crate::play_session::PlaySession, slot: i32, name: &str) {
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let bytes = std::fs::read(root.join(format!("Data/items/Wizard/{name}.xnb"))).unwrap();
     let xnb = magicka_xnb::xnb::parse(&bytes).unwrap();
     let magicka_content::Content::Item(item) = magicka_content::parse_primary(&xnb)

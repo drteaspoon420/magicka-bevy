@@ -11,7 +11,7 @@ fn mods_root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../mods")
 }
 fn content() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 fn two_players() -> PlaySession {
     let mut s = PlaySession::load(&content(), "Havindr.lvl", "Wizard").unwrap();

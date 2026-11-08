@@ -299,8 +299,7 @@ fn global_box_callback_updates_killed_waiting_objects_and_leaves_error_ok_alone(
 #[ignore = "requires the private original MenuDefault asset"]
 fn private_original_menu_font_button_measurement() {
     use magicka_content::{assets::Asset, xna::XnaObject, Content};
-    let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../../../../target/Magicka/Content/Languages/eng/Font/MenuDefault.xnb");
+    let path = magicka_content::retail_content_dir().join("Languages/eng/Font/MenuDefault.xnb");
     let bytes = std::fs::read(path).unwrap();
     let xnb = magicka_xnb::xnb::parse(&bytes).unwrap();
     let parsed = magicka_content::parse_primary(&xnb).unwrap().unwrap();

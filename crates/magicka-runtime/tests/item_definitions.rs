@@ -7,9 +7,9 @@ use std::{path::PathBuf, sync::Arc};
 
 #[test]
 fn kv_override_patches_held_items_and_their_replacements() {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

@@ -1,5 +1,4 @@
 use magicka_runtime::{avatar::AvatarState, pickups::EquipmentExchange, play_session::PlaySession};
-use std::path::Path;
 
 fn gear(s: &PlaySession, slot: usize) -> Vec<String> {
     s.world.players[slot]
@@ -14,7 +13,7 @@ fn gear(s: &PlaySession, slot: usize) -> Vec<String> {
 
 #[test]
 fn each_robe_supplies_its_own_starting_equipment() {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }
@@ -36,7 +35,7 @@ fn each_robe_supplies_its_own_starting_equipment() {
 
 #[test]
 fn death_releases_equipment_once_and_another_wizard_can_pick_it_up() {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }
@@ -112,7 +111,7 @@ fn death_releases_equipment_once_and_another_wizard_can_pick_it_up() {
 
 #[test]
 fn scene_and_campaign_changes_carry_equipment_while_respawn_uses_robe_defaults() {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

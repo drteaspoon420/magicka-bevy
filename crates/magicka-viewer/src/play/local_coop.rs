@@ -865,8 +865,7 @@ mod tests {
     static NEXT: AtomicU64 = AtomicU64::new(0);
     fn app() -> App {
         let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        let content = root
-            .join("../../../../target/Magicka/Content")
+        let content = magicka_content::retail_content_dir()
             .canonicalize()
             .unwrap();
         let level = root
@@ -1392,7 +1391,7 @@ mod tests {
         let server_rules = rules_hash.clone();
         let server = std::thread::spawn(move || {
             let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-            let content = root.join("../../../../target/Magicka/Content");
+            let content = magicka_content::retail_content_dir();
             let level = root
                 .join("../../scenarios/feature-lab.lvl")
                 .canonicalize()

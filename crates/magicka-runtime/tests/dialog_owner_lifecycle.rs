@@ -1,8 +1,7 @@
 use magicka_runtime::{entity_command::EntityCommandHost, play_session::PlaySession};
-use std::path::Path;
 
 fn speaker_session() -> Option<(PlaySession, u16)> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

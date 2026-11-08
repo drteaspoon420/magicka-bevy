@@ -7,7 +7,7 @@ fn scenarios() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../scenarios")
 }
 fn content() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 #[test]
 fn authored_geometry_drives_collision_navigation_and_locator_edits() {

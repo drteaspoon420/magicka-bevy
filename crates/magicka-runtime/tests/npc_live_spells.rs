@@ -5,11 +5,10 @@ use magicka_runtime::{
     play_session::{PlaySession, SessionEvent},
 };
 use magicka_sim::{damage::CastType, spells::Elements as E};
-use std::path::Path;
 
 #[test]
 fn authored_enemy_projectile_cast_reaches_live_missiles() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -89,7 +88,7 @@ fn authored_enemy_projectile_cast_reaches_live_missiles() {
 
 #[test]
 fn item_projectiles_keep_travelling_effects_on_their_live_missile() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -182,7 +181,7 @@ fn item_projectiles_keep_travelling_effects_on_their_live_missile() {
 
 #[test]
 fn wounded_authored_caster_selects_and_presents_its_own_life_spell() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

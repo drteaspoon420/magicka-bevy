@@ -9,7 +9,6 @@ use magicka_runtime::{
     scene_loading::custom_hash,
     spawn_action::SpawnOrder,
 };
-use std::path::Path;
 
 fn sounds(set: &AnimationSet, animation: u16) -> Vec<(u16, i32)> {
     set.lookup(animation)
@@ -25,7 +24,7 @@ fn sounds(set: &AnimationSet, animation: u16) -> Vec<(u16, i32)> {
 
 #[test]
 fn player_and_npc_hit_clips_play_each_authored_sound_once_at_their_emitters() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

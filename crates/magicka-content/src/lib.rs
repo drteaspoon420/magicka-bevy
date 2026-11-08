@@ -20,6 +20,7 @@ pub mod xact;
 pub mod xna;
 
 pub use common::{ContentError, Reader, Result};
+pub use magicka_xnb::retail_content_dir;
 
 use magicka_xnb::xnb::Xnb;
 

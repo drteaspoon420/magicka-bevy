@@ -9,7 +9,7 @@ fn session() -> PlaySession {
         .canonicalize()
         .unwrap();
     let mut s = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         level.to_str().unwrap(),
         "Wizard",
     )

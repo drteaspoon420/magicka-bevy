@@ -12,14 +12,12 @@ use magicka_runtime::entity_command::EntityCommandHost;
 use magicka_runtime::play_session::PlaySession;
 use magicka_runtime::scene_loading::custom_hash;
 use magicka_runtime::spawn_phys::SpawnPhysHost;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn content() -> Option<PathBuf> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir().then_some(root)
 }
 

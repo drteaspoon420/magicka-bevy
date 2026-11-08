@@ -8,7 +8,6 @@ use magicka_sim::{
     damage::{attack, Damage},
     spells::Elements as E,
 };
-use std::path::Path;
 const DT: f32 = 1. / 60.;
 fn host(s: &PlaySession) -> &Grimnir2Host {
     s.world
@@ -25,7 +24,7 @@ fn host(s: &PlaySession) -> &Grimnir2Host {
         .expect("physical Grimnir2 missing")
 }
 fn session() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

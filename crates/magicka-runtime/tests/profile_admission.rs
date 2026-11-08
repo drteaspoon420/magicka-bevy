@@ -9,9 +9,9 @@ use magicka_runtime::{network_session::HostedSession, play_session::PlaySession}
 use std::path::PathBuf;
 
 fn session() -> PlaySession {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

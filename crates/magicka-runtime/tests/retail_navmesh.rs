@@ -88,9 +88,7 @@ fn check_level(mesh: &NavMesh, seed: &mut u64, stats: &mut [usize; 3]) {
 fn retail_navmeshes_path_inside_their_corridors() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

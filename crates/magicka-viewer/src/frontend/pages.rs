@@ -4661,8 +4661,7 @@ mod tests {
 
     #[test]
     fn controller_sprites_come_from_the_game_spritesheet() {
-        let content = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             return;
         }

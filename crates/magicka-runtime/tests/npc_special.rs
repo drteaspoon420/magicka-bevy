@@ -1,8 +1,8 @@
 use magicka_content::character::{AbilityKind, ActionKind};
 use magicka_runtime::play_content::{load_character, melee_weapons};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 fn content() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 
 #[test]

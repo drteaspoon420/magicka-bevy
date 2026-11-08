@@ -11,9 +11,9 @@ fn write(root: &Path, path: &str, text: &str) {
 
 #[test]
 fn lua_passive_heals_and_hastes_the_holder_and_a_scripted_cast_uses_real_input() {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )

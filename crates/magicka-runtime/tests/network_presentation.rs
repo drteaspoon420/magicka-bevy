@@ -14,7 +14,7 @@ fn session() -> (PlaySession, String) {
         .canonicalize()
         .unwrap();
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         level.to_str().unwrap(),
         "Wizard",
     )
@@ -588,8 +588,7 @@ fn attachment_mirrors_follow_server_slots_independently_of_health() {
         .iter()
         .all(|(_, item)| !item.attached));
     frame.players[1].profile.robe = "Wizard_Samurai".into();
-    let content =
-        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     let template =
         magicka_runtime::play_content::load_character(&content, "Wizard_Samurai").unwrap();
     frame.players[1].attached_slots =

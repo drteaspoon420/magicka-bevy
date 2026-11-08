@@ -24,13 +24,9 @@ pub fn measure(
     deltas: bool,
     mut act: impl FnMut(u64, &mut PlaySession),
 ) -> Measurement {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
-        level,
-        "Wizard",
-    )
-    .unwrap();
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let mut session =
+        PlaySession::load(&magicka_content::retail_content_dir(), level, "Wizard").unwrap();
     session.disable_scripts();
     session.step(1. / 60.);
     let mut host = HostedSession::bind(

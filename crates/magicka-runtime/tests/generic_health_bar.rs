@@ -1,11 +1,10 @@
 //! Havindr's scripted dynamite timer (HealthBar/ActivateHealthBar actions on
 //! PlayState.GenericHealthBar). See research/generic-health-bar.md.
 use magicka_runtime::play_session::PlaySession;
-use std::path::Path;
 
 #[test]
 fn havindr_dynamite_timer_burns_for_180_seconds_after_its_delay() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

@@ -7,12 +7,11 @@ use magicka_sim::{
     damage::{attack, Damage},
     spells::Elements,
 };
-use std::path::Path;
 
 const DT: f32 = 1.0 / 60.0;
 
 fn session() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }
@@ -354,7 +353,7 @@ fn burning_speeds_the_orc_and_freezing_stops_it() {
 
 #[test]
 fn machine_initialization_provides_the_named_warlock_for_the_real_intro() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;
@@ -430,7 +429,7 @@ fn machine_initialization_provides_the_named_warlock_for_the_real_intro() {
 
 #[test]
 fn machine_checkpoint_rebuilds_one_protected_speaker() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

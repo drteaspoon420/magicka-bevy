@@ -3,7 +3,6 @@ use magicka_runtime::{
     animation_effects::bone_orientation, avatar::PlayerInput, play_session::PlaySession,
     scene_loading::custom_hash,
 };
-use std::path::Path;
 
 #[test]
 fn effect_bone_cancels_inverse_bind_and_reverses_forward() {
@@ -31,7 +30,7 @@ fn effect_bone_cancels_inverse_bind_and_reverses_forward() {
 
 #[test]
 fn real_charge_actions_start_build_follow_loop_and_stop_on_release() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

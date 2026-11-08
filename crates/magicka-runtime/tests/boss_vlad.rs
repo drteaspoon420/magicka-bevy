@@ -7,10 +7,10 @@ use magicka_runtime::{
     script_runtime::ScriptWorld,
 };
 use magicka_sim::status::{Status as S, StatusEffect};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 const DT: f32 = 1. / 60.;
 fn root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 fn command(s: &mut PlaySession, command: BossCommand) {
     s.world

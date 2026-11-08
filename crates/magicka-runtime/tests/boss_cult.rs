@@ -4,7 +4,6 @@ use magicka_runtime::{
     scene_loading::custom_hash,
     scene_world::{boss_live::BossRef, cult_live::CultState},
 };
-use std::path::Path;
 
 const DT: f32 = 1.0 / 60.0;
 
@@ -34,7 +33,7 @@ fn kill_all(s: &mut PlaySession, handles: &[u16]) {
 
 #[test]
 fn cult_spawns_its_warlocks_and_runs_rounds_until_the_leader_revives_them() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

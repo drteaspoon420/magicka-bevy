@@ -182,8 +182,7 @@ mod tests {
     use super::*;
     #[test]
     fn native_text_atlas_switches_device_glyphs_and_restores_keyboard_bytes() {
-        let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         let font =
             magicka_runtime::play_content::bitmap_font(&root, "Languages/eng/Font/Maiandra14")
                 .unwrap();

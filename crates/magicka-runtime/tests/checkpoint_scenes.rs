@@ -1,10 +1,9 @@
 //! Checkpoint rollback of inactive scenes, using the Havindr house detour.
 use magicka_runtime::{play_session::PlaySession, scene_loading::custom_hash};
-use std::path::PathBuf;
 const DT: f32 = 1. / 60.;
 
 fn street() -> Option<PlaySession> {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }
@@ -64,8 +63,7 @@ fn street_checkpoint_resets_house_progress_from_both_sides_of_the_door() {
     for (return_to_street, reload_disk) in [(false, false), (true, false), (true, true)] {
         let Some(mut s) = street() else { return };
         if reload_disk {
-            let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-                .join("../../../../target/Magicka/Content");
+            let root = magicka_content::retail_content_dir();
             s = PlaySession::load_disk_save(&root, &s.disk_save().unwrap()).unwrap();
         }
         let generation = s.checkpoint_generation;

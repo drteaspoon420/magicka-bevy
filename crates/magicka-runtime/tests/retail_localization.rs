@@ -66,9 +66,7 @@ impl TextBoxInitHost for BackgroundHost {
 fn retail_localization_tables_decode_without_executing_content() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

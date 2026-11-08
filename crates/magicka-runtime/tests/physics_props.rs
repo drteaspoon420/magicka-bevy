@@ -4,7 +4,7 @@ use magicka_runtime::{
 };
 use std::path::PathBuf;
 fn content() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 #[test]
 fn retail_prop_catalogue_decodes_collision_descriptors() {

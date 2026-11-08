@@ -43,7 +43,7 @@ fn exchange(
 #[test]
 fn two_owned_wizards_move_conjure_cast_and_survive_scene_rebuilds() {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let content = root.join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     let level = root
         .join("../../scenarios/feature-lab.lvl")
         .canonicalize()

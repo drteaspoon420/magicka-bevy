@@ -8,15 +8,13 @@ use magicka_runtime::{
     avatar::PlayerInput,
     play_session::{PlaySession, SessionEvent},
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 #[test]
 fn retail_start_scene_scripts_run_with_dialogs() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

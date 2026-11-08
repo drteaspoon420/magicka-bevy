@@ -232,8 +232,7 @@ mod tests {
 
     #[test]
     fn occupied_slot_uses_selected_profile_robe_and_direct_load_uses_saved_robe() {
-        let content = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             eprintln!("retail content absent; skipping");
             return;

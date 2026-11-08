@@ -407,13 +407,11 @@ mod tests {
 
     #[test]
     fn challenge_and_versus_lists_match_the_level_manager() {
-        let root = concat!(
-            env!("CARGO_MANIFEST_DIR"),
-            "/../../../../target/Magicka/Content"
-        );
-        if !std::path::Path::new(root).is_dir() {
+        let root = magicka_content::retail_content_dir();
+        if !root.is_dir() {
             return;
         }
+        let root = root.to_str().unwrap();
         let challenges = level_list(root, "Challenges");
         assert_eq!(
             challenges.len(),

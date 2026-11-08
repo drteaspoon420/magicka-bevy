@@ -26,9 +26,9 @@ fn interacting_with_the_weapon_rack_calls_on_interact() {
         end
         "#,
     );
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut s = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Wizard_Castle.lvl",
         "Wizard",
     )

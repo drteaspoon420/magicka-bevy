@@ -124,8 +124,7 @@ mod tests {
 
     #[test]
     fn avatar_kill_in_survival_scores_and_scrolls() {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

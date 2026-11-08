@@ -1294,8 +1294,7 @@ mod tests {
 
     #[test]
     fn swamp_bot_heals_the_villagers_through_life_casting_and_leaves_the_scene() {
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -1319,8 +1318,7 @@ mod tests {
 
     #[test]
     fn havindr_bot_completes_without_forcing_the_fire_props() {
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -1337,8 +1335,7 @@ mod tests {
     #[test]
     fn lighting_props_stay_siege_targets_when_solid_or_observed_by_the_script() {
         use magicka_runtime::{script_condition::ScriptCondition, script_runtime::ScriptRuntime};
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -1424,8 +1421,7 @@ mod tests {
 
     #[test]
     fn havindr_bot_returns_to_the_exit_after_finishing_the_market() {
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -1449,8 +1445,7 @@ mod tests {
     /// the wizard reaches the first lever relative to periodic action presses.
     #[test]
     fn battlefield_bot_activates_bridges_and_completes_the_chapter() {
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }
@@ -1472,8 +1467,7 @@ mod tests {
 
     #[test]
     fn battlefield_route_uses_existing_ice_and_rejects_thawed_water() {
-        let root =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

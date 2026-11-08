@@ -6,7 +6,7 @@ use magicka_runtime::{
     play_content,
     play_session::PlaySession,
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 #[path = "support/ffmpeg.rs"]
 mod ffmpeg;
 
@@ -14,9 +14,7 @@ mod ffmpeg;
 fn retail_dialog_voices_start_and_end_with_independent_audio_keys() {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         eprintln!("SKIP: retail content absent");
         return;

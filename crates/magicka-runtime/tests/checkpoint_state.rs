@@ -16,9 +16,7 @@ const DT: f32 = 1.0 / 60.0;
 fn content() -> Option<PathBuf> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir().then_some(root)
 }
 

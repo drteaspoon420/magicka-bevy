@@ -6,7 +6,6 @@ use magicka_runtime::{
     script_runtime::ScriptRuntime,
 };
 use serde_json::json;
-use std::path::Path;
 
 #[test]
 fn completed_dialog_script_fact_survives_boundary_restore() {
@@ -86,7 +85,7 @@ fn script_state_roundtrip_keeps_queues_flags_and_variables() {
 
 #[test]
 fn campaign_disk_reload_preserves_players_equipment_magicks_and_checkpoint() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;
@@ -212,7 +211,7 @@ fn assert_robe_damage(session: &mut PlaySession, necromancer: bool) {
 #[test]
 fn selected_profile_robe_controls_damage_and_survives_saved_checkpoint() {
     use magicka_runtime::{play_content::load_character, CharacterDefinition};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;
@@ -293,7 +292,7 @@ fn selected_profile_robe_controls_damage_and_survives_saved_checkpoint() {
 
 #[test]
 fn profile_robe_load_preserves_absent_checkpoint_and_rejects_bad_template() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;

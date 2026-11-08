@@ -6,7 +6,6 @@ use magicka_sim::{
     damage::{attack, Damage},
     spells::Elements,
 };
-use std::path::Path;
 
 const DT: f32 = 1.0 / 60.0;
 
@@ -44,7 +43,7 @@ fn hit(s: &mut PlaySession, zone: u16, element: Elements, amount: f32) {
 
 #[test]
 fn fafnir_wakes_fights_quakes_and_is_defeated() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -128,7 +127,7 @@ fn fafnir_wakes_fights_quakes_and_is_defeated() {
 /// lance damage it.
 #[test]
 fn fafnir_fireball_and_lance_reach_the_wizard() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -205,7 +204,7 @@ fn fafnir_fireball_and_lance_reach_the_wizard() {
 /// through the one-shot path they stayed for the rest of the fight.
 #[test]
 fn fafnir_charm_and_earthquake_effects_end_with_their_states() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -290,7 +289,7 @@ fn fafnir_charm_and_earthquake_effects_end_with_their_states() {
 #[test]
 fn fafnir_wing_pushes_the_wizard_behind_its_spine() {
     use magicka_runtime::avatar::PlayerInput;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

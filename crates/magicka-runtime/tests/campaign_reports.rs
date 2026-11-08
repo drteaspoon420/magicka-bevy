@@ -1,8 +1,7 @@
 use magicka_runtime::{play_session::PlaySession, scene_loading::custom_hash};
-use std::path::PathBuf;
 const DT: f32 = 1. / 60.;
 fn session(scene: &str) -> Option<PlaySession> {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }
@@ -200,7 +199,7 @@ fn skeleton_archer_attacks_without_a_connected_navmesh() {
 #[test]
 fn mines_ledge_archer_reacts_with_defend_and_fires() {
     use magicka_runtime::entity_command::EntityCommandHost;
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -268,7 +267,7 @@ fn mines_ledge_archer_reacts_with_defend_and_fires() {
 fn battlefield_exit_walk_like_the_bot() {
     use magicka_runtime::avatar::PlayerInput;
     use magicka_sim::{navmesh::movement, spray_pulse::Segment};
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -441,7 +440,7 @@ fn battlefield_exit_walk_like_the_bot() {
 #[test]
 fn battlefield_s2_exit_lies_across_water() {
     use magicka_sim::navmesh::movement;
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

@@ -11,7 +11,7 @@ fn write(root: &Path, path: &str, text: &str) {
     std::fs::write(p, text).unwrap();
 }
 fn content() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 fn mod_dir() -> PathBuf {
     let dir = std::env::temp_dir().join(format!("magicka-custom-magick-{}", std::process::id()));

@@ -90,8 +90,7 @@ fn adapter_advances_motion_preserves_static_and_cleans_up_generations() {
     assert!(physics.state(1).is_none());
 }
 fn session() -> Option<PlaySession> {
-    let content =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return None;
     }

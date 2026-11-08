@@ -4,7 +4,7 @@ use std::path::PathBuf;
 
 fn session() -> PlaySession {
     let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let content = root.join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     let level = root
         .join("../../scenarios/feature-lab.lvl")
         .canonicalize()
@@ -118,7 +118,7 @@ fn wire_rejects_nonfinite_or_out_of_range_movement() {
 #[test]
 fn original_controller_tutorial_localization_is_kept_alongside_keyboard() {
     use magicka_runtime::{script_runtime::ScriptWorld, tutorial::TutorialAction};
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut s = PlaySession::load(&root, "Wizard_Castle.lvl", "Wizard").unwrap();
     s.disable_scripts();
     let action = TutorialAction::read(
@@ -278,8 +278,7 @@ fn extra_controller_interacts_and_browses_for_its_own_slot() {
 #[test]
 fn extra_controller_dismisses_tutorial_only_on_a_new_press_after_holdoff() {
     use magicka_network::control::Controls;
-    let content =
-        PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     let mut s = PlaySession::load(&content, "Wizard_Castle.lvl", "Wizard").unwrap();
     s.change_scene_named("wc_s3", "start").unwrap();
     s.headless_dialogs = Some([1280., 720.]);

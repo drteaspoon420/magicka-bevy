@@ -378,8 +378,7 @@ mod blast_tests {
 
     #[test]
     fn egg_blast_skin_falloff_beam_exemption_occlusion_and_authority() {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

@@ -8358,8 +8358,7 @@ mod level_reload_tests {
 
     #[test]
     fn debug_level_selection_changes_the_session_and_restart_stays_there() {
-        let content =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             eprintln!("retail content absent; skipping");
             return;
@@ -8385,8 +8384,7 @@ mod level_reload_tests {
 
     #[test]
     fn inspection_boss_trigger_sees_the_scene_startup_spawn() {
-        let content =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         if !content.is_dir() {
             eprintln!("retail content absent; skipping");
             return;
@@ -8415,10 +8413,7 @@ mod npc_tint_tests {
     #[test]
     fn npc_tints_follow_the_model_or_the_cloned_player() {
         let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-        let Ok(content) = root
-            .join("../../../../target/Magicka/Content")
-            .canonicalize()
-        else {
+        let Ok(content) = magicka_content::retail_content_dir().canonicalize() else {
             eprintln!("retail content absent; skipping");
             return;
         };

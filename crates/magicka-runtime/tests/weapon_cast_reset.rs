@@ -4,15 +4,13 @@ use magicka_runtime::{
     play_session::PlaySession,
 };
 use magicka_sim::damage::CastType;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 const DT: f32 = 1.0 / 60.0;
 
 fn session() -> Option<PlaySession> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(PathBuf::from)
-        .unwrap_or_else(|| {
-            Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         return None;
     }

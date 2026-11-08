@@ -226,7 +226,7 @@ mod local_recovery_tests {
             .canonicalize()
             .unwrap();
         let mut session = PlaySession::load(
-            &root.join("../../../../target/Magicka/Content"),
+            &magicka_content::retail_content_dir(),
             level.to_str().unwrap(),
             "Wizard",
         )

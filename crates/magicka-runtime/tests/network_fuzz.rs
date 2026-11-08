@@ -225,9 +225,9 @@ fn diagnose(host: &HostedSession, session: &PlaySession) {
 }
 
 fn run(seed: u64, ticks: u64) -> (u64, u64) {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )
@@ -379,9 +379,9 @@ fn run(seed: u64, ticks: u64) -> (u64, u64) {
 /// Found by this fuzz: one Move with a skewed matrix made every frame invalid.
 #[test]
 fn a_skewed_or_degenerate_move_leaves_a_character_publishable() {
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
+        &magicka_content::retail_content_dir(),
         "Havindr.lvl",
         "Wizard",
     )
@@ -445,8 +445,8 @@ fn hostile_requests_cannot_stop_the_host() {
 #[test]
 fn hostile_frames_cannot_panic_a_client_mirror() {
     use magicka_runtime::network_session::{mirror_world, RemoteEffects, RemotePlayers};
-    let root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    let content = root.join("../../../../target/Magicka/Content");
+    let _root = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+    let content = magicka_content::retail_content_dir();
     let mut hosted = PlaySession::load(&content, "Havindr.lvl", "Wizard").unwrap();
     hosted.disable_scripts();
     hosted.step(1. / 60.);

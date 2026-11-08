@@ -1096,8 +1096,7 @@ fn a_dangerous_missile_pushes_an_idle_npc_but_a_default_one_does_not() {
 #[test]
 fn retail_templates_define_the_panic_clips_and_group_weights() {
     use magicka_runtime::play_content::load_character;
-    let root =
-        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

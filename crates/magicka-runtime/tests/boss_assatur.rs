@@ -7,7 +7,6 @@ use magicka_sim::{
     damage::{attack, Damage},
     spells::Elements,
 };
-use std::path::Path;
 
 const DT: f32 = 1.0 / 60.0;
 
@@ -40,7 +39,7 @@ fn hit(s: &mut PlaySession, element: Elements, amount: f32) {
 
 #[test]
 fn assatur_descends_casts_hurts_and_dies_with_its_triggers() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

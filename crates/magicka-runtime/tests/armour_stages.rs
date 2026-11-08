@@ -9,10 +9,9 @@ use magicka_sim::{
     spells::Elements,
     status::{Status, StatusEffect},
 };
-use std::path::Path;
 
 fn session() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }

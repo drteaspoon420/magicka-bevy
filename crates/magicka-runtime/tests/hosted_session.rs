@@ -9,12 +9,8 @@ fn session() -> (PlaySession, String) {
         .unwrap()
         .to_string_lossy()
         .into_owned();
-    let mut session = PlaySession::load(
-        &root.join("../../../../target/Magicka/Content"),
-        &level,
-        "Wizard",
-    )
-    .unwrap();
+    let mut session =
+        PlaySession::load(&magicka_content::retail_content_dir(), &level, "Wizard").unwrap();
     session.step(1. / 60.);
     (session, level)
 }
@@ -38,8 +34,7 @@ fn pump(
 fn defeat_before_first_checkpoint_reloads_world_once_and_keeps_udp_owners() {
     use magicka_network::control::{Controls, InputCommand};
     for dedicated in [false, true] {
-        let content =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         let mut session = PlaySession::load(&content, "Havindr.lvl", "Wizard").unwrap();
         session.disable_scripts();
         let initial_scene = session.scene_name().to_string();
@@ -218,8 +213,7 @@ fn campaign_completion_keeps_udp_owners_and_gear_and_loads_client_worlds() {
         network_session::{mirror_player_spell_state, mirror_world, RemotePlayers},
     };
     for dedicated in [false, true] {
-        let content =
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let content = magicka_content::retail_content_dir();
         let mut session = PlaySession::load(&content, "Havindr.lvl", "Wizard").unwrap();
         session.disable_scripts();
         let mut host = HostedSession::bind(

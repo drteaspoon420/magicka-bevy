@@ -1,9 +1,8 @@
 use magicka_runtime::play_session::PlaySession;
-use std::path::Path;
 
 #[test]
 fn highlands_outro_reaches_second_scene_without_skipping() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -88,7 +87,7 @@ fn highlands_outro_reaches_second_scene_without_skipping() {
 
 #[test]
 fn airship_crash_reaches_next_scene_with_player_alive() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

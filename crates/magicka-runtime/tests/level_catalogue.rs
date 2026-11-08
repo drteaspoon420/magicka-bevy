@@ -1,10 +1,9 @@
 use magicka_runtime::play_content::{level_files, load_start_scene};
 use magicka_runtime::play_session::PlaySession;
-use std::path::Path;
 
 #[test]
 fn nested_levels_and_start_scenes_resolve_from_the_level_directory() {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return;
     }

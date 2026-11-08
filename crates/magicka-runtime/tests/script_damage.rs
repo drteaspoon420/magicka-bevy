@@ -4,11 +4,10 @@ use magicka_runtime::{
     scene_loading::custom_hash,
     scene_script::{ActionDefinition, SceneScriptLayout},
 };
-use std::path::Path;
 
 #[test]
 fn castle_opening_damage_and_quick_execute_use_public_player_damage() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

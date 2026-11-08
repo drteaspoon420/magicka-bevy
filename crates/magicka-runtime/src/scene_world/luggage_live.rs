@@ -216,8 +216,7 @@ mod tests {
     use crate::ruleset::SurvivalPacks;
 
     fn glade() -> Option<PlaySession> {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         root.is_dir()
             .then(|| PlaySession::load(&root, "Challenges/ch_glade.lvl", "Wizard").unwrap())
     }

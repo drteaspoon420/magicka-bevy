@@ -7,7 +7,7 @@ use magicka_runtime::play_session::PlaySession;
 use std::path::Path;
 
 fn lab() -> Option<PlaySession> {
-    let content = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let content = magicka_content::retail_content_dir();
     if !content.is_dir() {
         return None;
     }

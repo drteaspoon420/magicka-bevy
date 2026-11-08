@@ -1,10 +1,9 @@
 //! Highlands village defense: checkpoint props and native chieftain health bar.
 use magicka_runtime::{play_session::PlaySession, scene_loading::custom_hash};
-use std::path::Path;
 const DT: f32 = 1. / 60.;
 
 fn battle() -> Option<PlaySession> {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return None;
     }
@@ -113,7 +112,7 @@ fn legacy_save_recovers_buildings_without_physics_snapshots() {
         .as_object_mut()
         .unwrap()
         .remove("physics");
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert_eq!(houses(&loaded).len(), 5, "recover the current scene");
     assert!(loaded.restart_at_checkpoint().unwrap());
@@ -168,7 +167,7 @@ fn legacy_recovery_uses_each_scenes_health_and_executed_actions() {
         )
         .unwrap();
     history.retain(|i| i.as_u64() != Some(other as u64));
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert_eq!(houses(&loaded).len(), 3);
     assert!(!houses(&loaded)
@@ -187,7 +186,7 @@ fn explicit_empty_physics_snapshot_does_not_use_legacy_recovery() {
     let mut saved = s.disk_save().unwrap();
     saved["physics"] = serde_json::json!([]);
     saved["checkpoint"]["physics"] = serde_json::json!([]);
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert!(houses(&loaded).is_empty());
     assert!(loaded.restart_at_checkpoint().unwrap());
@@ -217,7 +216,7 @@ fn unversioned_empty_checkpoint_recovers_its_positive_house_records() {
         .as_object_mut()
         .unwrap()
         .remove("physics_version");
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert!(loaded.restart_at_checkpoint().unwrap());
     loaded.step(DT);
@@ -247,7 +246,7 @@ fn unversioned_partial_snapshot_merges_without_duplicates_or_reviving_dead_props
         .retain(|p| p["unique_id"] == custom_hash("house2"));
     let i = s.runtime.layout().actions.iter().position(|a| matches!(a, magicka_runtime::scene_script::ActionDefinition::SpawnPhys(a) if a.unique_id == custom_hash("house0"))).unwrap();
     cp["scripts"]["phys"][i][1] = serde_json::json!(0.);
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert!(loaded.restart_at_checkpoint().unwrap());
     loaded.step(DT);
@@ -293,7 +292,7 @@ fn reported_slot_restores_checkpoint_houses() {
         return;
     };
     let saved: serde_json::Value = serde_json::from_slice(&std::fs::read(path).unwrap()).unwrap();
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert!(loaded.restart_at_checkpoint().unwrap());
     loaded.step(DT);
@@ -409,7 +408,7 @@ fn saved_checkpoint_restores_only_surviving_props_and_their_damage_callbacks() {
         custom_hash("house1 explodes")
     );
     let saved = s.disk_save().unwrap();
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     let mut loaded = PlaySession::load_disk_save(&root, &saved).unwrap();
     assert_eq!(houses(&loaded).len(), 4);
     assert!(loaded.restart_at_checkpoint().unwrap());

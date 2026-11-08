@@ -216,8 +216,7 @@ mod tests {
     use magicka_sim::damage_delivery::DamagePayload;
 
     fn arena() -> Option<PlaySession> {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return None;
         }
@@ -313,8 +312,7 @@ mod waiting_tests {
 
     #[test]
     fn a_hosted_match_starts_when_the_second_player_joins() {
-        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         if !root.is_dir() {
             return;
         }

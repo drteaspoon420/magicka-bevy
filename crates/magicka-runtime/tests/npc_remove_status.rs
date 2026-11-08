@@ -1,10 +1,9 @@
 use magicka_content::character::{AbilityKind, ActionKind};
 use magicka_runtime::play_content::load_character;
-use std::path::Path;
 
 #[test]
 fn authored_status_removal_inventory() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -58,7 +57,7 @@ fn wet_orcs_choose_their_authored_removal_animation_and_clear_only_wet() {
         animation_controller::animation_value, npc_combat::AbilityBody, play_session::PlaySession,
     };
     use magicka_sim::status::{Status, StatusEffect};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -168,7 +167,7 @@ fn removal_selection_respects_status_expression_animation_and_cooldown() {
     };
     use magicka_sim::ai_expression::ExpressionArgs;
     use std::sync::Arc;
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

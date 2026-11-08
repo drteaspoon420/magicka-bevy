@@ -54,10 +54,7 @@ fn replay_replaces_only_survivors_and_leaves_cached_proximity_unassigned() {
 fn session() -> Option<PlaySession> {
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(std::path::PathBuf::from)
-        .unwrap_or_else(|| {
-            std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     root.is_dir()
         .then(|| PlaySession::load(&root, "Niflheim.lvl", "Wizard").unwrap())
 }

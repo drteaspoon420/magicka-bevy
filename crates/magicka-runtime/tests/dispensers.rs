@@ -4,7 +4,6 @@ use magicka_runtime::{
     script_runtime::ScriptWorld,
 };
 use magicka_sim::{damage::Damage, spray_pulse::Segment};
-use std::path::Path;
 
 fn dispenser(amount: i32, active: bool) -> Dispenser {
     Dispenser::new(
@@ -112,7 +111,7 @@ fn capsule_query_retains_native_output_overwrite() {
 
 #[test]
 fn authored_mines_eggs_and_hole_actions_have_live_hosts() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         eprintln!("retail content absent; skipping");
         return;

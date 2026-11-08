@@ -4,10 +4,10 @@ use magicka_runtime::{
     npc_combat::{AbilityBody, CombatAbility},
     play_content::load_character,
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn content() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 
 #[test]
@@ -274,10 +274,10 @@ mod live_session {
         play_session::PlaySession,
     };
     use magicka_sim::ai_expression::ExpressionArgs;
-    use std::{path::Path, sync::Arc};
+    use std::sync::Arc;
 
     fn content() -> Option<std::path::PathBuf> {
-        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+        let root = magicka_content::retail_content_dir();
         root.is_dir().then_some(root)
     }
 

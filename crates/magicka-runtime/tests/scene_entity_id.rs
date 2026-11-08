@@ -2,11 +2,10 @@ use magicka_runtime::{
     entity_command::EntityCommandHost, give_order::GiveOrderHost, play_session::PlaySession,
     scene_loading::custom_hash,
 };
-use std::path::Path;
 
 #[test]
 fn respawned_named_actor_supersedes_old_corpse_and_removal_does_not_restore_it() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

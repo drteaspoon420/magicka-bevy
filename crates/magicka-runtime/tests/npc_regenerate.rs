@@ -2,13 +2,10 @@ use magicka_content::character::ActionKind;
 use magicka_runtime::{
     animation_controller::animation_value, play_content::load_character, play_session::PlaySession,
 };
-use std::{
-    path::{Path, PathBuf},
-    sync::Arc,
-};
+use std::{path::PathBuf, sync::Arc};
 const DT: f32 = 1. / 60.;
 fn root() -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content")
+    magicka_content::retail_content_dir()
 }
 fn session(name: &str) -> Option<(PlaySession, u16)> {
     if !root().is_dir() {

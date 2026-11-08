@@ -202,10 +202,7 @@ fn retail_casting_abilities_decode_without_invented_recipes_or_animations() {
     use magicka_content::{parse_primary, Content};
     let root = std::env::var_os("MAGICKA_CONTENT")
         .map(std::path::PathBuf::from)
-        .unwrap_or_else(|| {
-            std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("../../../../target/Magicka/Content")
-        });
+        .unwrap_or_else(|| magicka_content::retail_content_dir());
     if !root.is_dir() {
         return;
     }

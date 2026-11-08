@@ -2,9 +2,9 @@ use magicka_runtime::{
     level_variables::LevelVariables, pickups::EquipmentExchange, play_session::PlaySession,
     scene_loading::custom_hash, scene_script::SceneScriptLayout, script_runtime::ScriptRuntime,
 };
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 fn content() -> Option<PathBuf> {
-    let path = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let path = magicka_content::retail_content_dir();
     path.is_dir().then_some(path)
 }
 #[test]

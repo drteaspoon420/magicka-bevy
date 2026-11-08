@@ -4,11 +4,10 @@ use magicka_sim::{
     damage::{attack as A, Damage},
     spells::Elements as E,
 };
-use std::path::Path;
 
 #[test]
 fn arc_damage_hits_props_with_falloff_callbacks_and_query_exclusions() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -112,7 +111,7 @@ fn arc_damage_hits_props_with_falloff_callbacks_and_query_exclusions() {
 fn prop_solid_flag_vetoes_response_without_skipping_missile_callback() {
     use magicka_runtime::missiles::LiveMissile;
     use magicka_sim::missile_events::{condition, EventCondition, MissileConditions, MissileEvent};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -185,7 +184,7 @@ fn prop_solid_flag_vetoes_response_without_skipping_missile_callback() {
 fn missile_blast_damages_nearby_props_and_excludes_distant_props() {
     use magicka_runtime::{avatar::PlayerInput, missiles::LiveMissile};
     use magicka_sim::missile_events::{condition, EventCondition, MissileConditions, MissileEvent};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -254,7 +253,7 @@ fn missile_blast_damages_nearby_props_and_excludes_distant_props() {
 #[test]
 fn melee_prop_target_flag_and_swept_box_distance() {
     use magicka_runtime::npc_combat::{MeleeGeometry, MeleeTarget};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -309,7 +308,7 @@ fn melee_prop_target_flag_and_swept_box_distance() {
 #[test]
 fn spell_input_reaches_castle_puzzle_props() {
     use magicka_runtime::{avatar::PlayerInput, spawn_phys::SpawnPhysHost};
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -407,7 +406,7 @@ fn spell_input_reaches_castle_puzzle_props() {
 
 #[test]
 fn castle_generator_resistances_callbacks_and_respawn() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -461,7 +460,7 @@ fn castle_generator_resistances_callbacks_and_respawn() {
 
 #[test]
 fn castle_rope_death_has_null_sender_and_dead_prop_ignores_further_hits() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -502,7 +501,7 @@ fn castle_rope_death_has_null_sender_and_dead_prop_ignores_further_hits() {
 /// boards fly as they do with a used pool.
 #[test]
 fn castle_wooden_wall_death_spawns_its_gibs_once() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
@@ -557,7 +556,7 @@ fn castle_wooden_wall_death_spawns_its_gibs_once() {
 /// Never-used native cache bodies have mass 1 (not each chunk's mass 100).
 #[test]
 fn castle2_tower_explosion_spawns_all_chunks_at_native_fresh_cache_speed() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

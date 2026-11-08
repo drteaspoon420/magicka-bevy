@@ -6,11 +6,10 @@ use magicka_sim::{
     shield_entity::{ShieldKind, SHIELD_COLOR},
     spells::Elements,
 };
-use std::path::Path;
 
 #[test]
 fn arc_shields_filter_obstructed_targets_but_take_damage_themselves() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }

@@ -2,11 +2,10 @@ use magicka_content::character::{AbilityKind, ActionKind};
 use magicka_runtime::{
     animation_controller::animation_value, play_content::load_character, play_session::PlaySession,
 };
-use std::path::Path;
 
 #[test]
 fn authored_melee_charge_moves_the_npc_body() {
-    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../../../target/Magicka/Content");
+    let root = magicka_content::retail_content_dir();
     if !root.is_dir() {
         return;
     }
