@@ -110,12 +110,9 @@ here are periodic snapshots of that workspace, so history is coarse.
 
 ## License
 
-The source code is dual-licensed under either of:
+The source code is licensed under the [MIT license](LICENSE).
 
-- MIT license ([LICENSE-MIT](LICENSE-MIT))
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE))
-
-at your option. Third-party material keeps its own license. For example, the
+Third-party material keeps its own license. For example, the
 controller prompt images embedded in `assets/input_prompts/` are from Kenney Input
-Prompts (CC0). The licenses cover only this repository's contents. They grant no
+Prompts (CC0). The license covers only this repository's contents. It grants no
 rights to Magicka or its assets.

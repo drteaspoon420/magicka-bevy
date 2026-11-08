@@ -4,7 +4,7 @@ members = ["crates/magicka-xnb", "crates/magicka-mods", "crates/magicka-definiti
 
 [workspace.package]
 edition = "2021"
-license = "MIT OR Apache-2.0"
+license = "MIT"
 publish = false
 
 # Each integration test links the Bevy/physics dependency graph. Full debug
