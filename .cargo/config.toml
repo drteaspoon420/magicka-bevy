@@ -1,0 +1,11 @@
+# Build defaults for this workspace (research/build-config.md).
+#
+# This host has crashed and corrupted build artifacts under heavy compiler
+# load, so keep the default parallelism low. An explicit `-j` still wins.
+[build]
+jobs = 2
+
+[env]
+# Runtime integration tests simulate whole scenes; cap the harness threads so
+# a test run does not start sixteen scene simulations at once.
+RUST_TEST_THREADS = "4"

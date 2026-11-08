@@ -1,0 +1,16 @@
+"Magicks"
+{
+    "example.my_magicks:storm_lance"
+    {
+        "NameKey"           "#example_storm_lance"
+        "DescriptionKey"    "#example_storm_lance_desc"
+        // Must be typeable and unused by every other Magick.
+        "Combination"       "lightning,arcane,shield"
+        "CastType"          "instant"
+        "Cooldown"          "8.0"
+        "UnlockedByDefault" "1"
+        "ScriptFile"        "example.my_magicks/magicks/storm_lance.lua"
+        "Handler"           "OnSpellStart"
+        "Particle"          "example.my_magicks:storm_fx"
+    }
+}

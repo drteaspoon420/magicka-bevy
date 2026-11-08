@@ -1,0 +1,5 @@
+<!-- Clean authored rewrite scenario; not exported retail content. -->
+<Level>
+  <Start scene="lab" area="start"/>
+  <Scenes><Scene>lab.xml</Scene><Scene>corridor.xml</Scene></Scenes>
+</Level>

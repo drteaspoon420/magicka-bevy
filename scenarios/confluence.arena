@@ -1,0 +1,515 @@
+<!-- Authored MOBA experiment; all placements are design choices. -->
+<Arena version="1">
+  <Floor center="0,0,0" size="160,160" cell="2" clearance="0.6" height="2" />
+  <CameraBounds center="0,0" size="148,148" />
+  <Area name="camera_blue_jungle" center="-32,8,12" size="46,14,46" />
+  <Area name="camera_red_jungle" center="32,8,-12" size="46,14,46" />
+  <Area name="camera_river" center="0,4,0" size="140,14,140" />
+  <River width="10" surface="0.3" shallowDepth="0.3" deepDepth="4.3" fordHalfLength="11" fords="-62,0,62" />
+  <Rise center="-30,12" size="18,18" height="4" apron="12" />
+  <Rise center="30,-12" size="18,18" height="4" apron="12" />
+  <Surface center="0,0.01,0" size="160,160" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/grass_lush00_0.png" />
+  <Surface center="0,0.02,0" size="16,212.332" color="1,1,1" yaw="0.785398" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-47,0.035,-17.5" size="5,30.2167" color="1,1,1" yaw="1.60412" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-24.5,0.035,-40" size="5,46.6866" color="1,1,1" yaw="-0.328553" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-18.5,0.035,-6.5" size="5,35.6683" color="1,1,1" yaw="0.865228" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-27,0.035,40" size="5,26.2" color="1,1,1" yaw="1.5708" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="9,0.035,29" size="5,51.1902" color="1,1,1" yaw="2.0169" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="18.5,0.035,6.5" size="5,35.6683" color="1,1,1" yaw="-2.27636" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="47,0.035,17.5" size="5,30.2167" color="1,1,1" yaw="-1.53748" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="24.5,0.035,40" size="5,46.6866" color="1,1,1" yaw="2.81304" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="27,0.035,-40" size="5,26.2" color="1,1,1" yaw="-1.5708" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-9,0.035,-29" size="5,51.1902" color="1,1,1" yaw="-1.12469" tile="6" edge="0.75" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Surface center="-62,0.05,0" size="12,124.2" color="0.85,0.82,0.72" yaw="3.14159" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="0,0.05,-62" size="12,124.2" color="0.85,0.82,0.72" yaw="1.5708" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="-31,0.05,31" size="12,87.8812" color="0.85,0.82,0.72" yaw="2.35619" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="31,0.05,-31" size="12,87.8812" color="0.85,0.82,0.72" yaw="2.35619" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="0,0.05,62" size="12,124.2" color="0.85,0.82,0.72" yaw="1.5708" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="62,0.05,0" size="12,124.2" color="0.85,0.82,0.72" yaw="3.14159" tile="6" edge="1.1" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="-43,0.06,-17" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_0" position="-43,1,-17" />
+  <Area name="camp_0" center="-43,1,-17" size="10,4,10" />
+  <Surface center="-47,0.07,-21" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-39,0.07,-21" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-47,0.07,-13" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-39,0.07,-13" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-17,0.06,-43" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_1" position="-17,1,-43" />
+  <Area name="camp_1" center="-17,1,-43" size="10,4,10" />
+  <Surface center="-21,0.07,-47" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-13,0.07,-47" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-21,0.07,-39" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-13,0.07,-39" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-14,0.06,40" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_2" position="-14,1,40" />
+  <Area name="camp_2" center="-14,1,40" size="10,4,10" />
+  <Surface center="-18,0.07,36" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-10,0.07,36" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-18,0.07,44" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="-10,0.07,44" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="14,0.06,-40" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_3" position="14,1,-40" />
+  <Area name="camp_3" center="14,1,-40" size="10,4,10" />
+  <Surface center="10,0.07,-44" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="18,0.07,-44" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="10,0.07,-36" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="18,0.07,-36" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="43,0.06,17" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_4" position="43,1,17" />
+  <Area name="camp_4" center="43,1,17" size="10,4,10" />
+  <Surface center="39,0.07,13" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="47,0.07,13" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="39,0.07,21" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="47,0.07,21" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="17,0.06,43" size="10,10" color="1,1,1" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Nature/Ground/forestfloor00_0.png" />
+  <Locator name="camp_5" position="17,1,43" />
+  <Area name="camp_5" center="17,1,43" size="10,4,10" />
+  <Surface center="13,0.07,39" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="21,0.07,39" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="13,0.07,47" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Surface center="21,0.07,47" size="0.5,0.5" color="0.8,0.62,0.2" yaw="0" tile="6" edge="0" />
+  <Locator name="objective_0" position="-32,1,-18" />
+  <Area name="objective_0" center="-32,1,-18" size="14,5,14" />
+  <Surface center="-32,0.06,-18" size="14,14" color="0.55,0.7,0.73" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-32,0,-18" scale="5,5,5" yaw="0" />
+  <Box center="-32,1.5,-18" size="2,3,2" visible="false" />
+  <Locator name="objective_1" position="32,1,18" />
+  <Area name="objective_1" center="32,1,18" size="14,5,14" />
+  <Surface center="32,0.06,18" size="14,14" color="0.55,0.7,0.73" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="32,0,18" scale="5,5,5" yaw="0" />
+  <Box center="32,1.5,18" size="2,3,2" visible="false" />
+  <Surface center="-45,0.03,12" size="5,20" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="-15,0.03,12" size="5,20" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="-30,0.03,-3" size="20,5" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="-30,0.03,27" size="20,5" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="15,0.03,-12" size="5,20" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="45,0.03,-12" size="5,20" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="30,0.03,-27" size="20,5" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Surface center="30,0.03,3" size="20,5" color="1,1,1" yaw="0" tile="6" edge="0.5" texture="textures/Levels/Textures/Surface/Nature/Rock/cliff03_0.png" />
+  <Locator name="highground_blue" position="-30,5,12" />
+  <Locator name="highground_red" position="30,5,-12" />
+  <Locator name="river_shallow" position="0,1,0" />
+  <Locator name="river_deep" position="-40,1,-40" />
+  <Surface center="-62,0.065,62" size="24,24" color="0.8,0.8,0.8" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="-62,0.075,62" size="9,9" color="0.713,0.8075,0.895" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-62,0,62" scale="6,6,6" yaw="0" />
+  <Box center="-62,2,62" size="3,4,3" visible="false" />
+  <Locator name="blue_core" position="-62,1,62" />
+  <Area name="blue_base" center="-62,1,62" size="24,5,24" />
+  <Locator name="blue_spawn0" position="-57,1,57" />
+  <Locator name="start0" position="-57,1,57" />
+  <Locator name="blue_spawn1" position="-54,1,57" />
+  <Locator name="start1" position="-54,1,57" />
+  <Locator name="blue_spawn2" position="-57,1,54" />
+  <Locator name="start2" position="-57,1,54" />
+  <Locator name="blue_spawn3" position="-54,1,54" />
+  <Locator name="start3" position="-54,1,54" />
+  <Surface center="62,0.065,-62" size="24,24" color="0.8,0.8,0.8" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Surface center="62,0.075,-62" size="9,9" color="0.8775,0.727,0.7025" yaw="0" tile="6" edge="0" texture="textures/Levels/Textures/Surface/Structure/Stone/floor_cobblegrey_0.png" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="62,0,-62" scale="6,6,6" yaw="0" />
+  <Box center="62,2,-62" size="3,4,3" visible="false" />
+  <Locator name="red_core" position="62,1,-62" />
+  <Area name="red_base" center="62,1,-62" size="24,5,24" />
+  <Locator name="red_spawn0" position="57,1,-57" />
+  <Locator name="red_spawn1" position="54,1,-57" />
+  <Locator name="red_spawn2" position="57,1,-54" />
+  <Locator name="red_spawn3" position="54,1,-54" />
+  <Locator name="lane_top_0" position="-62,1,62" />
+  <Locator name="lane_top_1" position="-62,1,-62" />
+  <Locator name="lane_top_2" position="62,1,-62" />
+  <Locator name="tower_top_0" position="-66,1,32" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-66,0,32" scale="4,4,4" yaw="0" />
+  <Box center="-66,1.5,32" size="2,3,2" visible="false" />
+  <Locator name="tower_top_1" position="-66,1,-32" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-66,0,-32" scale="4,4,4" yaw="0" />
+  <Box center="-66,1.5,-32" size="2,3,2" visible="false" />
+  <Locator name="tower_top_2" position="-32,1,-66" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-32,0,-66" scale="4,4,4" yaw="0" />
+  <Box center="-32,1.5,-66" size="2,3,2" visible="false" />
+  <Locator name="tower_top_3" position="32,1,-66" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="32,0,-66" scale="4,4,4" yaw="0" />
+  <Box center="32,1.5,-66" size="2,3,2" visible="false" />
+  <Locator name="lane_mid_0" position="-62,1,62" />
+  <Locator name="lane_mid_1" position="0,1,0" />
+  <Locator name="lane_mid_2" position="62,1,-62" />
+  <Locator name="tower_mid_0" position="-43,1,37" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-43,0,37" scale="4,4,4" yaw="0" />
+  <Box center="-43,1.5,37" size="2,3,2" visible="false" />
+  <Locator name="tower_mid_1" position="-22,5,16" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-22,4,16" scale="4,4,4" yaw="0" />
+  <Box center="-22,5.5,16" size="2,3,2" visible="false" />
+  <Locator name="tower_mid_2" position="22,5,-16" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="22,4,-16" scale="4,4,4" yaw="0" />
+  <Box center="22,5.5,-16" size="2,3,2" visible="false" />
+  <Locator name="tower_mid_3" position="43,1,-37" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="43,0,-37" scale="4,4,4" yaw="0" />
+  <Box center="43,1.5,-37" size="2,3,2" visible="false" />
+  <Locator name="lane_bot_0" position="-62,1,62" />
+  <Locator name="lane_bot_1" position="62,1,62" />
+  <Locator name="lane_bot_2" position="62,1,-62" />
+  <Locator name="tower_bot_0" position="-32,1,66" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="-32,0,66" scale="4,4,4" yaw="0" />
+  <Box center="-32,1.5,66" size="2,3,2" visible="false" />
+  <Locator name="tower_bot_1" position="32,1,66" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="32,0,66" scale="4,4,4" yaw="0" />
+  <Box center="32,1.5,66" size="2,3,2" visible="false" />
+  <Locator name="tower_bot_2" position="66,1,32" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="66,0,32" scale="4,4,4" yaw="0" />
+  <Box center="66,1.5,32" size="2,3,2" visible="false" />
+  <Locator name="tower_bot_3" position="66,1,-32" />
+  <Scenery asset="gltf/Custom/Confluence/shrine.glb" position="66,0,-32" scale="4,4,4" yaw="0" />
+  <Box center="66,1.5,-32" size="2,3,2" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.6989,0,-54.1468" scale="8.1,8.1,8.1" yaw="4.14008" />
+  <Box center="-71.6989,0.8,-54.1468" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-70.2989,0,-53.6468" scale="0.9,0.9,0.9" yaw="-37.7537" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-71.6989,0,-54.1468" scale="0.5,0.5,0.5" yaw="-14.3398" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-72.1159,0,-47.4005" scale="7.5,7.5,7.5" yaw="5.54706" />
+  <Box center="-72.1159,0.8,-47.4005" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-72.4753,0,-42.1951" scale="8.1,8.1,8.1" yaw="0.338315" />
+  <Box center="-72.4753,0.8,-42.1951" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.5988,0,-36.4882" scale="7.5,7.5,7.5" yaw="1.59652" />
+  <Box center="-72.5988,0.8,-36.4882" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-71.1988,0,-35.9882" scale="0.9,0.9,0.9" yaw="-32.7261" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.4251,0,-29.5265" scale="8.1,8.1,8.1" yaw="3.22764" />
+  <Box center="-72.4251,0.8,-29.5265" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-72.0403,0,-23.7819" scale="7.5,7.5,7.5" yaw="4.64519" />
+  <Box center="-72.0403,0.8,-23.7819" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-71.6356,0,-18.5979" scale="8.1,8.1,8.1" yaw="5.94148" />
+  <Box center="-71.6356,0.8,-18.5979" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-70.2356,0,-18.0979" scale="0.9,0.9,0.9" yaw="-27.0701" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.4117,0,-11.8771" scale="7.5,7.5,7.5" yaw="1.24964" />
+  <Box center="-71.4117,0.8,-11.8771" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-71.4117,0,-11.8771" scale="0.5,0.5,0.5" yaw="-14.2823" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.4799,0,-5.47218" scale="8.1,8.1,8.1" yaw="2.68263" />
+  <Box center="-71.4799,0.8,-5.47218" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.8062,0,-0.424001" scale="7.5,7.5,7.5" yaw="3.7312" />
+  <Box center="-71.8062,0.8,-0.424001" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-70.4062,0,0.0759991" scale="0.9,0.9,0.9" yaw="-21.6691" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-72.2288,0,5.71402" scale="8.1,8.1,8.1" yaw="4.99851" />
+  <Box center="-72.2288,0.8,5.71402" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.5377,0,12.5871" scale="7.5,7.5,7.5" yaw="0.183106" />
+  <Box center="-72.5377,0.8,12.5871" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.5798,0,17.9511" scale="8.1,8.1,8.1" yaw="1.38768" />
+  <Box center="-72.5798,0.8,17.9511" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-71.1798,0,18.4511" scale="0.9,0.9,0.9" yaw="-16.3886" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.334,0,23.4408" scale="7.5,7.5,7.5" yaw="2.70616" />
+  <Box center="-72.334,0.8,23.4408" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.9225,0,30.3679" scale="8.1,8.1,8.1" yaw="4.39998" />
+  <Box center="-71.9225,0.8,30.3679" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-71.9225,0,30.3679" scale="0.5,0.5,0.5" yaw="-14.3845" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.5494,0,36.3494" scale="7.5,7.5,7.5" yaw="5.86784" />
+  <Box center="-71.5494,0.8,36.3494" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-70.1494,0,36.8494" scale="0.9,0.9,0.9" yaw="-10.56" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.4,0,41.4328" scale="8.1,8.1,8.1" yaw="0.782377" />
+  <Box center="-71.4,0.8,41.4328" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-71.5484,0,47.9741" scale="7.5,7.5,7.5" yaw="2.2225" />
+  <Box center="-71.5484,0.8,47.9741" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-71.921,0,54.5819" scale="8.1,8.1,8.1" yaw="3.61123" />
+  <Box center="-71.921,0.8,54.5819" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-70.521,0,55.0819" scale="0.9,0.9,0.9" yaw="-5.20172" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-72.5794,0,65.5926" scale="8.1,8.1,8.1" yaw="5.91412" />
+  <Box center="-72.5794,0.8,65.5926" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-72.5384,0,72.5384" scale="7.5,7.5,7.5" yaw="1.21905" />
+  <Box center="-72.5384,0.8,72.5384" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-71.1384,0,73.0384" scale="0.9,0.9,0.9" yaw="0" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-72.5384,0,72.5384" scale="0.5,0.5,0.5" yaw="-14.5077" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-65.5926,0,72.5794" scale="8.1,8.1,8.1" yaw="3.28921" />
+  <Box center="-65.5926,0.8,72.5794" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-54.1468,0,-71.6989" scale="8.1,8.1,8.1" yaw="5.36545" />
+  <Box center="-54.1468,0.8,-71.6989" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-52.7468,0,-71.1989" scale="0.9,0.9,0.9" yaw="-37.7537" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-54.1468,0,-71.6989" scale="0.5,0.5,0.5" yaw="-10.8294" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-54.5819,0,71.921" scale="8.1,8.1,8.1" yaw="0.123573" />
+  <Box center="-54.5819,0.8,71.921" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-53.1819,0,72.421" scale="0.9,0.9,0.9" yaw="5.20172" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-47.4005,0,-72.1159" scale="7.5,7.5,7.5" yaw="0.989335" />
+  <Box center="-47.4005,0.8,-72.1159" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-48.206,0,-35.4382" scale="7.5,7.5,7.5" yaw="2.78906" />
+  <Box center="-48.206,0.8,-35.4382" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-48.206,0,-35.4382" scale="0.5,0.5,0.5" yaw="-9.6412" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-47.7833,0,-30.3621" scale="8.1,8.1,8.1" yaw="4.06621" />
+  <Box center="-47.7833,0.8,-30.3621" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-47.7833,0,-30.3621" scale="0.5,0.5,0.5" yaw="-9.55666" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-48.0647,0.80545,-6.58365" scale="8.1,8.1,8.1" yaw="3.0947" />
+  <Box center="-48.0647,1.60545,-6.58365" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-48.4419,0.852689,0.299785" scale="7.5,7.5,7.5" yaw="4.54456" />
+  <Box center="-48.4419,1.65269,0.299785" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-48.5998,0.800052,6.41266" scale="8.1,8.1,8.1" yaw="5.88468" />
+  <Box center="-48.5998,1.60005,6.41266" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-48.46,0.846667,11.4648" scale="7.5,7.5,7.5" yaw="0.78929" />
+  <Box center="-48.46,1.64667,11.4648" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-48.46,0.846667,11.4648" scale="0.5,0.5,0.5" yaw="-9.692" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-48.0918,0.969395,17.8926" scale="8.1,8.1,8.1" yaw="2.35694" />
+  <Box center="-48.0918,1.76939,17.8926" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-47.6781,1.10731,24.5964" scale="7.5,7.5,7.5" yaw="4.00076" />
+  <Box center="-47.6781,1.90731,24.5964" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-47.4241,1.07759,29.7672" scale="8.1,8.1,8.1" yaw="5.24933" />
+  <Box center="-47.4241,1.87759,29.7672" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-47.9741,0,71.5484" scale="7.5,7.5,7.5" yaw="1.99962" />
+  <Box center="-47.9741,0.8,71.5484" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-42.1951,0,-72.4753" scale="8.1,8.1,8.1" yaw="2.45227" />
+  <Box center="-42.1951,0.8,-72.4753" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-42.2629,2.91235,0.568088" scale="8.1,8.1,8.1" yaw="0.155599" />
+  <Box center="-42.2629,3.71235,0.568088" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-42.2629,2.91235,0.568088" scale="0.5,0.5,0.5" yaw="-8.45259" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-41.8421,3.05265,6.02304" scale="8.7,8.7,8.7" yaw="1.51817" />
+  <Box center="-41.8421,3.85265,6.02304" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-41.4996,3.16681,11.4188" scale="8.1,8.1,8.1" yaw="2.84403" />
+  <Box center="-41.4996,3.96681,11.4188" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-41.4055,3.19816,18.3085" scale="8.7,8.7,8.7" yaw="4.43517" />
+  <Box center="-41.4055,3.99816,18.3085" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-41.6065,2.86491,24.4053" scale="8.1,8.1,8.1" yaw="5.75885" />
+  <Box center="-41.6065,3.66491,24.4053" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-41.4328,0,71.4" scale="8.1,8.1,8.1" yaw="3.90677" />
+  <Box center="-41.4328,0.8,71.4" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-36.4882,0,-72.5988" scale="7.5,7.5,7.5" yaw="4.11752" />
+  <Box center="-36.4882,0.8,-72.5988" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-35.0882,0,-72.0988" scale="0.9,0.9,0.9" yaw="-32.7261" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-35.4382,0,-48.206" scale="7.5,7.5,7.5" yaw="3.68042" />
+  <Box center="-35.4382,0.8,-48.206" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-35.4382,0,-48.206" scale="0.5,0.5,0.5" yaw="-7.08764" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-35.6198,1.0206,-5.9382" scale="8.1,8.1,8.1" yaw="0.650441" />
+  <Box center="-35.6198,1.8206,-5.9382" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-35.6198,1.0206,-5.9382" scale="0.5,0.5,0.5" yaw="-7.12395" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-35.4081,3.1848,0.554399" scale="7.5,7.5,7.5" yaw="2.18637" />
+  <Box center="-35.4081,3.9848,0.554399" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-34.0081,3.35147,1.0544" scale="0.9,0.9,0.9" yaw="-10.4561" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-36.3494,0,71.5494" scale="7.5,7.5,7.5" yaw="5.44896" />
+  <Box center="-36.3494,0.8,71.5494" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-34.9494,0,72.0494" scale="0.9,0.9,0.9" yaw="10.56" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-29.5265,0,-72.4251" scale="8.1,8.1,8.1" yaw="6.22253" />
+  <Box center="-29.5265,0.8,-72.4251" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-30.3621,0,-47.7833" scale="8.1,8.1,8.1" yaw="5.28243" />
+  <Box center="-30.3621,0.8,-47.7833" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-30.3621,0,-47.7833" scale="0.5,0.5,0.5" yaw="-6.07243" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-29.6636,1.14666,-5.56001" scale="8.7,8.7,8.7" yaw="2.50348" />
+  <Box center="-29.6636,1.94666,-5.56001" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-30.0747,3.0885,0.265512" scale="8.1,8.1,8.1" yaw="3.70328" />
+  <Box center="-30.0747,3.8885,0.265512" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-29.7672,0,47.4241" scale="8.1,8.1,8.1" yaw="1.92807" />
+  <Box center="-29.7672,0.8,47.4241" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-30.3679,0,71.9225" scale="8.1,8.1,8.1" yaw="1.02518" />
+  <Box center="-30.3679,0.8,71.9225" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-23.7819,0,-72.0403" scale="7.5,7.5,7.5" yaw="1.73108" />
+  <Box center="-23.7819,0.8,-72.0403" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-24.5493,2.94828,-0.155172" scale="7.5,7.5,7.5" yaw="5.24723" />
+  <Box center="-24.5493,3.74828,-0.155172" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-24.5964,0,47.6781" scale="7.5,7.5,7.5" yaw="3.5199" />
+  <Box center="-24.5964,0.8,47.6781" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-23.4408,0,72.334" scale="7.5,7.5,7.5" yaw="3.17387" />
+  <Box center="-23.4408,0.8,72.334" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-18.5979,0,-71.6356" scale="8.1,8.1,8.1" yaw="3.36102" />
+  <Box center="-18.5979,0.8,-71.6356" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-17.1979,0,-71.1356" scale="0.9,0.9,0.9" yaw="-27.0701" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-17.9511,0,72.5798" scale="8.1,8.1,8.1" yaw="4.85845" />
+  <Box center="-17.9511,0.8,72.5798" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="-16.5511,0,73.0798" scale="0.9,0.9,0.9" yaw="16.3886" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-11.8771,0,-71.4117" scale="7.5,7.5,7.5" yaw="5.40594" />
+  <Box center="-11.8771,0.8,-71.4117" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-11.8771,0,-71.4117" scale="0.5,0.5,0.5" yaw="-2.37541" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-12.5871,0,72.5377" scale="7.5,7.5,7.5" yaw="0.157245" />
+  <Box center="-12.5871,0.8,72.5377" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-5.47218,0,-71.4799" scale="8.1,8.1,8.1" yaw="1.00765" />
+  <Box center="-5.47218,0.8,-71.4799" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-6.58365,0,-48.0647" scale="8.1,8.1,8.1" yaw="5.99062" />
+  <Box center="-6.58365,0.8,-48.0647" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-5.40023,0,-24.5721" scale="8.1,8.1,8.1" yaw="5.38885" />
+  <Box center="-5.40023,0.8,-24.5721" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-5.53817,0,-18.0101" scale="8.7,8.7,8.7" yaw="0.553619" />
+  <Box center="-5.53817,0.8,-18.0101" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-5.48874,0,24.2538" scale="8.1,8.1,8.1" yaw="3.87448" />
+  <Box center="-5.48874,0.8,24.2538" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-5.40857,0,30.4487" scale="8.7,8.7,8.7" yaw="5.30383" />
+  <Box center="-5.40857,0.8,30.4487" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-6.41266,0,48.5998" scale="8.1,8.1,8.1" yaw="2.84109" />
+  <Box center="-6.41266,0.8,48.5998" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="-6.41266,0,48.5998" scale="0.5,0.5,0.5" yaw="-1.28253" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-5.71402,0,72.2288" scale="8.1,8.1,8.1" yaw="2.12643" />
+  <Box center="-5.71402,0.8,72.2288" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-0.424001,0,-71.8062" scale="7.5,7.5,7.5" yaw="2.43144" />
+  <Box center="-0.424001,0.8,-71.8062" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="0.975999,0,-71.3062" scale="0.9,0.9,0.9" yaw="-21.6691" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="0.299785,0,-48.4419" scale="7.5,7.5,7.5" yaw="1.66419" />
+  <Box center="0.299785,0.8,-48.4419" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="0.568088,0,-42.2629" scale="8.1,8.1,8.1" yaw="3.14577" />
+  <Box center="0.568088,0.8,-42.2629" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="0.568088,0,-42.2629" scale="0.5,0.5,0.5" yaw="0.113618" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-0.155172,0,-24.5493" scale="7.5,7.5,7.5" yaw="0.667082" />
+  <Box center="-0.155172,0.8,-24.5493" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-0.49883,0,-17.612" scale="8.1,8.1,8.1" yaw="2.13914" />
+  <Box center="-0.49883,0.8,-17.612" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="0.90117,0,-17.112" scale="0.9,0.9,0.9" yaw="-5.43325" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="0.49883,0,17.612" scale="8.1,8.1,8.1" yaw="4.14404" />
+  <Box center="0.49883,0.8,17.612" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="1.89883,0,18.112" scale="0.9,0.9,0.9" yaw="5.43325" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="0.155172,0,24.5493" scale="7.5,7.5,7.5" yaw="5.6161" />
+  <Box center="0.155172,0.8,24.5493" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="-0.568088,0,42.2629" scale="8.1,8.1,8.1" yaw="3.13742" />
+  <Box center="-0.568088,0.8,42.2629" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="-0.299785,0,48.4419" scale="7.5,7.5,7.5" yaw="4.61899" />
+  <Box center="-0.299785,0.8,48.4419" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="0.424001,0,71.8062" scale="7.5,7.5,7.5" yaw="3.85175" />
+  <Box center="0.424001,0.8,71.8062" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="1.824,0,72.3062" scale="0.9,0.9,0.9" yaw="21.6691" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="5.71402,0,-72.2288" scale="8.1,8.1,8.1" yaw="4.15676" />
+  <Box center="5.71402,0.8,-72.2288" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="6.41266,0,-48.5998" scale="8.1,8.1,8.1" yaw="3.44209" />
+  <Box center="6.41266,0.8,-48.5998" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="5.40857,0,-30.4487" scale="8.7,8.7,8.7" yaw="0.97935" />
+  <Box center="5.40857,0.8,-30.4487" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="5.48874,0,-24.2538" scale="8.1,8.1,8.1" yaw="2.40871" />
+  <Box center="5.48874,0.8,-24.2538" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="5.53817,0,18.0101" scale="8.7,8.7,8.7" yaw="5.72957" />
+  <Box center="5.53817,0.8,18.0101" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="5.40023,0,24.5721" scale="8.1,8.1,8.1" yaw="0.894333" />
+  <Box center="5.40023,0.8,24.5721" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="6.58365,0,48.0647" scale="8.1,8.1,8.1" yaw="0.292561" />
+  <Box center="6.58365,0.8,48.0647" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="5.47218,0,71.4799" scale="8.1,8.1,8.1" yaw="5.27553" />
+  <Box center="5.47218,0.8,71.4799" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="12.5871,0,-72.5377" scale="7.5,7.5,7.5" yaw="6.12594" />
+  <Box center="12.5871,0.8,-72.5377" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="11.8771,0,71.4117" scale="7.5,7.5,7.5" yaw="0.877245" />
+  <Box center="11.8771,0.8,71.4117" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="17.9511,0,-72.5798" scale="8.1,8.1,8.1" yaw="1.42474" />
+  <Box center="17.9511,0.8,-72.5798" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="19.3511,0,-72.0798" scale="0.9,0.9,0.9" yaw="-16.3886" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="18.5979,0,71.6356" scale="8.1,8.1,8.1" yaw="2.92216" />
+  <Box center="18.5979,0.8,71.6356" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="19.9979,0,72.1356" scale="0.9,0.9,0.9" yaw="27.0701" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="23.4408,0,-72.334" scale="7.5,7.5,7.5" yaw="3.10932" />
+  <Box center="23.4408,0.8,-72.334" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="24.5964,0,-47.6781" scale="7.5,7.5,7.5" yaw="2.76328" />
+  <Box center="24.5964,0.8,-47.6781" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="24.5493,2.94828,0.155172" scale="7.5,7.5,7.5" yaw="1.03595" />
+  <Box center="24.5493,3.74828,0.155172" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="23.7819,0,72.0403" scale="7.5,7.5,7.5" yaw="4.5521" />
+  <Box center="23.7819,0.8,72.0403" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="30.3679,0,-71.9225" scale="8.1,8.1,8.1" yaw="5.25801" />
+  <Box center="30.3679,0.8,-71.9225" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="30.3679,0,-71.9225" scale="0.5,0.5,0.5" yaw="6.07357" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="29.7672,0,-47.4241" scale="8.1,8.1,8.1" yaw="4.35511" />
+  <Box center="29.7672,0.8,-47.4241" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="30.0747,3.0885,-0.265512" scale="8.1,8.1,8.1" yaw="2.57991" />
+  <Box center="30.0747,3.8885,-0.265512" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="29.6636,1.14666,5.56001" scale="8.7,8.7,8.7" yaw="3.7797" />
+  <Box center="29.6636,1.94666,5.56001" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="30.3621,0,47.7833" scale="8.1,8.1,8.1" yaw="1.00075" />
+  <Box center="30.3621,0.8,47.7833" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="29.5265,0,72.4251" scale="8.1,8.1,8.1" yaw="0.0606594" />
+  <Box center="29.5265,0.8,72.4251" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="36.3494,0,-71.5494" scale="7.5,7.5,7.5" yaw="0.834223" />
+  <Box center="36.3494,0.8,-71.5494" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="37.7494,0,-71.0494" scale="0.9,0.9,0.9" yaw="-10.56" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="35.4081,3.1848,-0.554399" scale="7.5,7.5,7.5" yaw="4.09682" />
+  <Box center="35.4081,3.9848,-0.554399" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="36.8081,3.01813,-0.0543989" scale="0.9,0.9,0.9" yaw="10.4561" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="35.6198,1.0206,5.9382" scale="8.1,8.1,8.1" yaw="5.63274" />
+  <Box center="35.6198,1.8206,5.9382" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="35.4382,0,48.206" scale="7.5,7.5,7.5" yaw="2.60276" />
+  <Box center="35.4382,0.8,48.206" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="36.4882,0,72.5988" scale="7.5,7.5,7.5" yaw="2.16567" />
+  <Box center="36.4882,0.8,72.5988" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="37.8882,0,73.0988" scale="0.9,0.9,0.9" yaw="32.7261" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="41.4328,0,-71.4" scale="8.1,8.1,8.1" yaw="2.37641" />
+  <Box center="41.4328,0.8,-71.4" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="41.6065,2.86491,-24.4053" scale="8.1,8.1,8.1" yaw="0.524338" />
+  <Box center="41.6065,3.66491,-24.4053" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="41.4055,3.19816,-18.3085" scale="8.7,8.7,8.7" yaw="1.84801" />
+  <Box center="41.4055,3.99816,-18.3085" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="41.4996,3.16681,-11.4188" scale="8.1,8.1,8.1" yaw="3.43915" />
+  <Box center="41.4996,3.96681,-11.4188" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="41.8421,3.05265,-6.02304" scale="8.7,8.7,8.7" yaw="4.76502" />
+  <Box center="41.8421,3.85265,-6.02304" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="42.2629,2.91235,-0.568088" scale="8.1,8.1,8.1" yaw="6.12759" />
+  <Box center="42.2629,3.71235,-0.568088" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="42.1951,0,72.4753" scale="8.1,8.1,8.1" yaw="3.83091" />
+  <Box center="42.1951,0.8,72.4753" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="47.9741,0,-71.5484" scale="7.5,7.5,7.5" yaw="4.28356" />
+  <Box center="47.9741,0.8,-71.5484" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="47.4241,1.07759,-29.7672" scale="8.1,8.1,8.1" yaw="1.03386" />
+  <Box center="47.4241,1.87759,-29.7672" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="47.6781,1.10731,-24.5964" scale="7.5,7.5,7.5" yaw="2.28243" />
+  <Box center="47.6781,1.90731,-24.5964" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="48.0918,0.969395,-17.8926" scale="8.1,8.1,8.1" yaw="3.92625" />
+  <Box center="48.0918,1.76939,-17.8926" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="48.46,0.846667,-11.4648" scale="7.5,7.5,7.5" yaw="5.4939" />
+  <Box center="48.46,1.64667,-11.4648" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="48.5998,0.800052,-6.41266" scale="8.1,8.1,8.1" yaw="0.398507" />
+  <Box center="48.5998,1.60005,-6.41266" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="48.5998,0.800052,-6.41266" scale="0.5,0.5,0.5" yaw="9.71997" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="48.4419,0.852689,-0.299785" scale="7.5,7.5,7.5" yaw="1.73862" />
+  <Box center="48.4419,1.65269,-0.299785" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="48.0647,0.80545,6.58365" scale="8.1,8.1,8.1" yaw="3.18848" />
+  <Box center="48.0647,1.60545,6.58365" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="47.7833,0,30.3621" scale="8.1,8.1,8.1" yaw="2.21698" />
+  <Box center="47.7833,0.8,30.3621" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="48.206,0,35.4382" scale="7.5,7.5,7.5" yaw="3.49412" />
+  <Box center="48.206,0.8,35.4382" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="47.4005,0,72.1159" scale="7.5,7.5,7.5" yaw="5.29385" />
+  <Box center="47.4005,0.8,72.1159" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="54.5819,0,-71.921" scale="8.1,8.1,8.1" yaw="6.15961" />
+  <Box center="54.5819,0.8,-71.921" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="55.9819,0,-71.421" scale="0.9,0.9,0.9" yaw="-5.20172" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="54.1468,0,71.6989" scale="8.1,8.1,8.1" yaw="0.917737" />
+  <Box center="54.1468,0.8,71.6989" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="55.5468,0,72.1989" scale="0.9,0.9,0.9" yaw="37.7537" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="65.5926,0,-72.5794" scale="8.1,8.1,8.1" yaw="2.99398" />
+  <Box center="65.5926,0.8,-72.5794" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="72.5384,0,-72.5384" scale="7.5,7.5,7.5" yaw="5.06413" />
+  <Box center="72.5384,0.8,-72.5384" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.9384,0,-72.0384" scale="0.9,0.9,0.9" yaw="0" />
+  <Scenery asset="gltf/Custom/Confluence/log.glb" position="72.5384,0,-72.5384" scale="0.5,0.5,0.5" yaw="14.5077" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.5794,0,-65.5926" scale="8.1,8.1,8.1" yaw="0.369063" />
+  <Box center="72.5794,0.8,-65.5926" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.921,0,-54.5819" scale="8.1,8.1,8.1" yaw="2.67196" />
+  <Box center="71.921,0.8,-54.5819" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.321,0,-54.0819" scale="0.9,0.9,0.9" yaw="5.20172" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.5484,0,-47.9741" scale="7.5,7.5,7.5" yaw="4.06068" />
+  <Box center="71.5484,0.8,-47.9741" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="71.4,0,-41.4328" scale="8.1,8.1,8.1" yaw="5.50081" />
+  <Box center="71.4,0.8,-41.4328" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.5494,0,-36.3494" scale="7.5,7.5,7.5" yaw="0.415349" />
+  <Box center="71.5494,0.8,-36.3494" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="72.9494,0,-35.8494" scale="0.9,0.9,0.9" yaw="10.56" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.9225,0,-30.3679" scale="8.1,8.1,8.1" yaw="1.88321" />
+  <Box center="71.9225,0.8,-30.3679" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="72.334,0,-23.4408" scale="7.5,7.5,7.5" yaw="3.57703" />
+  <Box center="72.334,0.8,-23.4408" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.5798,0,-17.9511" scale="8.1,8.1,8.1" yaw="4.89551" />
+  <Box center="72.5798,0.8,-17.9511" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.9798,0,-17.4511" scale="0.9,0.9,0.9" yaw="16.3886" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.5377,0,-12.5871" scale="7.5,7.5,7.5" yaw="6.10008" />
+  <Box center="72.5377,0.8,-12.5871" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.2288,0,-5.71402" scale="8.1,8.1,8.1" yaw="1.28467" />
+  <Box center="72.2288,0.8,-5.71402" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="71.8062,0,0.424001" scale="7.5,7.5,7.5" yaw="2.55198" />
+  <Box center="71.8062,0.8,0.424001" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.2062,0,0.924001" scale="0.9,0.9,0.9" yaw="21.6691" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="71.4799,0,5.47218" scale="8.1,8.1,8.1" yaw="3.60055" />
+  <Box center="71.4799,0.8,5.47218" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.4117,0,11.8771" scale="7.5,7.5,7.5" yaw="5.03355" />
+  <Box center="71.4117,0.8,11.8771" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="71.6356,0,18.5979" scale="8.1,8.1,8.1" yaw="0.341703" />
+  <Box center="71.6356,0.8,18.5979" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.0356,0,19.0979" scale="0.9,0.9,0.9" yaw="27.0701" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.0403,0,23.7819" scale="7.5,7.5,7.5" yaw="1.63799" />
+  <Box center="72.0403,0.8,23.7819" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="72.4251,0,29.5265" scale="8.1,8.1,8.1" yaw="3.05555" />
+  <Box center="72.4251,0.8,29.5265" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.5988,0,36.4882" scale="7.5,7.5,7.5" yaw="4.68666" />
+  <Box center="72.5988,0.8,36.4882" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.9988,0,36.9882" scale="0.9,0.9,0.9" yaw="32.7261" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.4753,0,42.1951" scale="8.1,8.1,8.1" yaw="5.94487" />
+  <Box center="72.4753,0.8,42.1951" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/spruce.glb" position="72.1159,0,47.4005" scale="7.5,7.5,7.5" yaw="0.736121" />
+  <Box center="72.1159,0.8,47.4005" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/ash.glb" position="71.6989,0,54.1468" scale="8.1,8.1,8.1" yaw="2.1431" />
+  <Box center="71.6989,0.8,54.1468" size="2.8,1.6,2.8" visible="false" />
+  <Scenery asset="gltf/Custom/Confluence/rock.glb" position="73.0989,0,54.6468" scale="0.9,0.9,0.9" yaw="37.7537" />
+  <Box center="0,2,-80" size="162,4,2" visible="false" />
+  <Box center="0,2,80" size="162,4,2" visible="false" />
+  <Box center="-80,2,0" size="2,4,160" visible="false" />
+  <Box center="80,2,0" size="2,4,160" visible="false" />
+  <DirectionalLight name="confluence_sun" direction="0.3,-1,0.4" diffuse="0.95,0.88,0.74" ambient="0.36,0.43,0.48" />
+</Arena>

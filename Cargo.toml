@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+members = ["crates/magicka-xnb", "crates/magicka-mods", "crates/magicka-definitions", "crates/magicka-script", "crates/magicka-sim", "crates/magicka-content", "crates/magicka-viewer", "crates/magicka-runtime", "crates/magicka-physics", "crates/magicka-network", "crates/bevy-toolmode"]
+
+[workspace.package]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+
+# Each integration test links the Bevy/physics dependency graph. Full debug
+# information made individual executables exceed 2 GiB and debug/ exceed 400 GiB.
+# Keep normal checks/tests compact; opt into symbols for a debugging session.
+# Workspace crates compile incrementally so an edit in one module does not
+# recompile the whole crate; dependencies stay non-incremental (they rarely
+# change, and incremental state for them is pure disk cost). See
+# research/build-config.md.
+[profile.dev]
+debug = 0
+incremental = true
+
+# Bevy is slow unoptimized; optimize dependencies even in dev builds.
+[profile.dev.package."*"]
+opt-level = 3
+debug = false
+incremental = false
+
+# LLVM 22 crashes optimizing the viewer with the default partitioning.
+# Keep this override local to the viewer; see research/viewer-qa.md.
+[profile.release.package.magicka-viewer]
+codegen-units = 32

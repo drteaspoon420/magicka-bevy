@@ -1,0 +1,1 @@
+-- Nothing to set up globally: the Magick and modifier carry their handlers.

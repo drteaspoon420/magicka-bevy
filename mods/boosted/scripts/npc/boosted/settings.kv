@@ -1,0 +1,24 @@
+// Server settings (authoritative: part of the rules hash).
+"Boosted"
+{
+    "StartingGold"  "100"
+    "KillReward"    "25"
+    "OfferCount"    "3"
+    "BanPrice"      "30"
+    // Offer rarity pools: weight, percent change and price.
+    "Rarities"
+    {
+        "normal"    { "Weight" "70"  "Percent" "10"  "Price" "50"  }
+        "rare"      { "Weight" "25"  "Percent" "25"  "Price" "120" }
+        "ultra"     { "Weight" "5"   "Percent" "50"  "Price" "300" }
+    }
+    // Keys never offered.
+    "Blocked"   { "GunAccuracy" "1" "RangedElevation" "1" }
+    // Keys whose percent is scaled down.
+    "Nerfed"    { "BlockValue" "0.5" }
+    // Keys where lower is better (offers reduce them).
+    "Inverted"  { "CooldownTime" "1" }
+    // Upgrading one key also upgrades its partner; partners are never
+    // offered side by side.
+    "Linked"    { "GunClip" "GunRate" "GunRate" "GunClip" }
+}

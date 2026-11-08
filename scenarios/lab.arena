@@ -1,0 +1,15 @@
+<!-- Clean procedural geometry and station placements. -->
+<Arena version="1">
+  <Floor center="0,0,0" size="32,32" cell="1" clearance="0.5" height="2"/>
+  <Box center="0,2,-5" size="2,4,10"/>
+  <Locator name="start0" position="-7,1,5"/>
+  <Locator name="start1" position="-9,1,5"/>
+  <Locator name="start2" position="-7,1,7"/>
+  <Locator name="start3" position="-9,1,7"/>
+  <Locator name="book" position="-4,1,6"/>
+  <Locator name="staff" position="-3,1,6"/>
+  <Locator name="prop" position="4,4,3"/>
+  <Locator name="goblin" position="6,1,5"/>
+  <Area name="portal" center="-7,1,12" size="3,4,3"/>
+  <DirectionalLight name="sun" direction="0.3,-1,0.4" diffuse="0.8,0.8,0.8" ambient="0.3,0.3,0.3"/>
+</Arena>

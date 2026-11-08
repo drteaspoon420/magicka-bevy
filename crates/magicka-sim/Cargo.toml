@@ -1,0 +1,10 @@
+[package]
+name = "magicka-sim"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Deterministic, presentation-free Magicka simulation logic"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

@@ -1,0 +1,12 @@
+<!-- Separate authored geometry for scene transition and checkpoint checks. -->
+<Arena version="1">
+  <Floor center="0,0,0" size="16,24" cell="1" clearance="0.5" height="2"/>
+  <Box center="7,2,0" size="1,4,24"/>
+  <Box center="-7,2,0" size="1,4,24"/>
+  <Locator name="start0" position="-6,1,-7"/>
+  <Locator name="start1" position="-4,1,-7"/>
+  <Locator name="start2" position="-2,1,-7"/>
+  <Locator name="start3" position="0,1,-7"/>
+  <Area name="portal" center="-6,1,7" size="3,4,3"/>
+  <DirectionalLight name="sun" direction="0.3,-1,0.4" diffuse="0.8,0.8,0.8" ambient="0.3,0.3,0.3"/>
+</Arena>

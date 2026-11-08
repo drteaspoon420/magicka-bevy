@@ -1,0 +1,11 @@
+<!-- The return portal and checkpoint use the same shared scene host. -->
+<Scene>
+  <Model>corridor.arena</Model>
+  <Trigger id="setup" repeat="false">
+    <Then><TriggerCheckpoint spawnPoint="start" spawnFairy="false" saveToDisk="false"/></Then>
+  </Trigger>
+  <Trigger id="to_lab" repeat="false">
+    <If><FactionPresent area="portal" factions="players" nr="0" compareMethod="greater"/></If>
+    <Then><ChangeScene scene="lab" spawnPoint="start" transition="none"/></Then>
+  </Trigger>
+</Scene>

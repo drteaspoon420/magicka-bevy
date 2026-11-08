@@ -1,0 +1,16 @@
+[package]
+name = "magicka-script"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+# Server-side Lua for mods (rewrite extension, plan workstream E). Clients
+# never run gameplay Lua.
+[dependencies]
+magicka-mods = { path = "../magicka-mods" }
+magicka-definitions = { path = "../magicka-definitions" }
+magicka-sim = { path = "../magicka-sim" }
+mlua = { version = "0.12.1", features = ["lua54", "vendored", "send"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0.151"

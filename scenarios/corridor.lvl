@@ -1,0 +1,5 @@
+<!-- Independent entry point for the authored corridor. -->
+<Level>
+  <Start scene="corridor" area="start"/>
+  <Scenes><Scene>corridor.xml</Scene><Scene>lab.xml</Scene></Scenes>
+</Level>

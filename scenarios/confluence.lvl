@@ -1,0 +1,4 @@
+<Level>
+  <Start scene="confluence" area="start"/>
+  <Scenes><Scene>confluence.xml</Scene></Scenes>
+</Level>

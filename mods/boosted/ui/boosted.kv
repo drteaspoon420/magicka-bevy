@@ -1,0 +1,19 @@
+// Mod-provided panel (H5), drawn from replicated net tables; the number
+// keys choose an offer and send a boosted.buy request.
+"Panels"
+{
+    "shop"
+    {
+        "Title"  "#boosted_title"
+        "Lines"
+        {
+            "1"  "Gold: {boosted:gold.$slot}"
+        }
+        "List"
+        {
+            "Source"  "boosted:offers.$slot"
+            "Item"    "[{rarity}] {key} on {target}: {from} -> {to} ({price} gold)"
+            "Action"  "boosted.buy"
+        }
+    }
+}

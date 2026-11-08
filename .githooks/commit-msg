@@ -1,0 +1,7 @@
+#!/bin/sh
+# Refuse co-author and sign-off trailers naming anyone else.
+. "$(dirname "$0")/identity.sh"
+if grep -iE '^(co-authored-by|signed-off-by|co-developed-by):' "$1" | grep -vF "$ALLOWED_IDENT" >/dev/null; then
+  echo "commit-msg: trailers may only name '$ALLOWED_IDENT'." >&2
+  exit 1
+fi

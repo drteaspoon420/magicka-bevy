@@ -1,0 +1,28 @@
+[package]
+name = "magicka-viewer"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Bevy viewer for exported Magicka levels and characters (glTF), with a headless render-check mode"
+
+[dependencies]
+bevy = "0.19.1"
+serde_json = "1"
+magicka-content = { path = "../magicka-content" }
+magicka-network = { path = "../magicka-network" }
+magicka-mods = { path = "../magicka-mods" }
+magicka-definitions = { path = "../magicka-definitions" }
+magicka-runtime = { path = "../magicka-runtime" }
+magicka-sim = { path = "../magicka-sim" }
+magicka-xnb = { path = "../magicka-xnb" }
+# Experimental developer menu (`--features debug-ui`); not part of the game.
+bevy-toolmode = { path = "../bevy-toolmode", optional = true }
+bevy_egui = { version = "0.42", optional = true, default-features = false, features = ["render", "default_fonts"] }
+
+[features]
+default = ["main-menu", "editor"]
+main-menu = ["dep:bevy_egui"]
+# Editor / dungeon master tool mode (bevy-toolmode), in normal builds too.
+editor = ["dep:bevy_egui", "dep:bevy-toolmode"]
+debug-ui = ["editor"]

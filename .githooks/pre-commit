@@ -1,0 +1,10 @@
+#!/bin/sh
+# Refuse commits whose author or committer is not the project identity.
+. "$(dirname "$0")/identity.sh"
+for role in AUTHOR COMMITTER; do
+  ident=$(git var "GIT_${role}_IDENT" | sed 's/ [0-9]* [-+][0-9]*$//')
+  if [ "$ident" != "$ALLOWED_IDENT" ]; then
+    echo "pre-commit: $role identity is '$ident'; only '$ALLOWED_IDENT' may commit here." >&2
+    exit 1
+  fi
+done

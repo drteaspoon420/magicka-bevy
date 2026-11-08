@@ -1,0 +1,4 @@
+<!-- Layout only; no scenario scripts. Named markers reserve future mod sites. -->
+<Scene>
+  <Model>confluence.arena</Model>
+</Scene>

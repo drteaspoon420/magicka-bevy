@@ -1,0 +1,17 @@
+<!-- Authored stations use existing runtime actions and user-supplied templates. -->
+<Scene>
+  <Model>lab.arena</Model>
+  <Trigger id="setup" repeat="false">
+    <Then>
+      <SpawnMagick magick="Teleport" area="book"/>
+      <SpawnItem item="staff_heirloom_grandfather_clock" area="staff"/>
+      <SpawnPhys object="bathball" area="prop" id="lab_prop"/>
+      <Spawn type="Goblin_warrior" area="goblin" order="idle" reactTo="none"/>
+      <TriggerCheckpoint spawnPoint="start" spawnFairy="false" saveToDisk="false"/>
+    </Then>
+  </Trigger>
+  <Trigger id="to_corridor" repeat="false">
+    <If><FactionPresent area="portal" factions="players" nr="0" compareMethod="greater"/></If>
+    <Then><ChangeScene scene="corridor" spawnPoint="start" transition="none"/></Then>
+  </Trigger>
+</Scene>

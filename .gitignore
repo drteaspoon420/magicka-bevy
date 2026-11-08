@@ -1,0 +1,32 @@
+# Build output and converted assets (derived from retail files; never commit).
+/target/
+/.cache/
+# Your own game install, linked or copied here (proprietary; never commit).
+/Magicka
+# Per-user mod selection, generated on first run.
+/mods/load_order.toml
+
+# Retail and converted asset formats anywhere in the tree.
+*.[xX][nN][bB]
+*.xwb
+*.xsb
+*.png
+*.dds
+*.tga
+*.wav
+*.ogg
+*.glb
+*.gltf
+*.obj
+*.bin
+*.exe
+*.dll
+
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+.DS_Store
+*~
+*.swp
